@@ -47,3 +47,6 @@ DerivedData
 xcuserdata/
 fonts/
 iOSInjectionProject/
+
+### Auto Generated ###
+*.generated.swift
