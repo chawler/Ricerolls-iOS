@@ -7,11 +7,28 @@
 //
 
 import UIKit
+import Moya
 
 class ViewController: UIViewController {
+    
+    let provider = MoyaProvider<ComicAPI>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        provider.request(.List) { result in
+            switch result {
+            case let .Success(moyaResponse):
+                do {
+                    let json = try moyaResponse.mapJSON()
+                    print(json)
+                } catch {
+                    print("error")
+                }
+            case .Failure(let error):
+                print(error)
+            }
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
