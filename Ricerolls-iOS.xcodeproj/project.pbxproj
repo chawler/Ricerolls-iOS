@@ -16,9 +16,10 @@
 		1501E8011D115D00006F4CD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1501E8031D115D00006F4CD3 /* Main.storyboard */; };
 		1501E8081D115D8A006F4CD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1501E80A1D115D8A006F4CD3 /* LaunchScreen.storyboard */; };
 		1501E80E1D1160D0006F4CD3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1501E80D1D1160D0006F4CD3 /* BaseViewController.swift */; };
-		1501E8111D1161DF006F4CD3 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1501E8101D1161DF006F4CD3 /* R.generated.swift */; };
+		3915EEC31D117D7D00BFA73D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3915EEC21D117D7D00BFA73D /* R.generated.swift */; };
 		39219CBA1D10C73A00FAEABB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39219CB91D10C73A00FAEABB /* AppDelegate.swift */; };
 		39219CC11D10C73A00FAEABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39219CC01D10C73A00FAEABB /* Assets.xcassets */; };
+		396EE8091D119C6500057468 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396EE8081D119C6500057468 /* Comic.swift */; };
 		39C4D0251D10D48E0057135B /* ComicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C4D0241D10D48E0057135B /* ComicAPI.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,11 +32,12 @@
 		1501E8021D115D00006F4CD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1501E8091D115D8A006F4CD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1501E80D1D1160D0006F4CD3 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		1501E8101D1161DF006F4CD3 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		3915EEC21D117D7D00BFA73D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		39219CB61D10C73A00FAEABB /* Ricerolls-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ricerolls-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39219CB91D10C73A00FAEABB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Ricerolls-iOS/App/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		39219CC01D10C73A00FAEABB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		39219CC51D10C73A00FAEABB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		396EE8081D119C6500057468 /* Comic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
 		39C4D0241D10D48E0057135B /* ComicAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicAPI.swift; sourceTree = "<group>"; };
 		8211487E693D75318478D356 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		940C16CEE0725AF0BA70E3A4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -77,7 +79,7 @@
 		1501E80B1D115DF4006F4CD3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1501E8101D1161DF006F4CD3 /* R.generated.swift */,
+				3915EEC21D117D7D00BFA73D /* R.generated.swift */,
 				39219CC51D10C73A00FAEABB /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -136,6 +138,7 @@
 		39C4D0201D10D3740057135B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				396EE8081D119C6500057468 /* Comic.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -304,7 +307,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1501E7F01D1152E8006F4CD3 /* TabBarController.swift in Sources */,
-				1501E8111D1161DF006F4CD3 /* R.generated.swift in Sources */,
+				396EE8091D119C6500057468 /* Comic.swift in Sources */,
+				3915EEC31D117D7D00BFA73D /* R.generated.swift in Sources */,
 				1501E7F41D1153FC006F4CD3 /* HomePageViewController.swift in Sources */,
 				39219CBA1D10C73A00FAEABB /* AppDelegate.swift in Sources */,
 				1501E7F21D1153C5006F4CD3 /* BookShelfViewController.swift in Sources */,
