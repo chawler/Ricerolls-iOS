@@ -89,12 +89,14 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/Moya.framework"
   install_framework "Pods/Moya_ObjectMapper.framework"
   install_framework "Pods/NSObject_Rx.framework"
+  install_framework "Pods/Nuke.framework"
   install_framework "Pods/ObjectMapper.framework"
   install_framework "Pods/Rswift.framework"
   install_framework "Pods/Result.framework"
   install_framework "Pods/RxCocoa.framework"
   install_framework "Pods/RxSwift.framework"
   install_framework "Pods/SnapKit.framework"
+  install_framework "Pods/SwiftDate.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Alamofire.framework"
@@ -102,10 +104,12 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Moya.framework"
   install_framework "Pods/Moya_ObjectMapper.framework"
   install_framework "Pods/NSObject_Rx.framework"
+  install_framework "Pods/Nuke.framework"
   install_framework "Pods/ObjectMapper.framework"
   install_framework "Pods/Rswift.framework"
   install_framework "Pods/Result.framework"
   install_framework "Pods/RxCocoa.framework"
   install_framework "Pods/RxSwift.framework"
   install_framework "Pods/SnapKit.framework"
+  install_framework "Pods/SwiftDate.framework"
 fi

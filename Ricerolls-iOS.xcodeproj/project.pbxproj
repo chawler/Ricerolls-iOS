@@ -20,6 +20,8 @@
 		39219CBA1D10C73A00FAEABB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39219CB91D10C73A00FAEABB /* AppDelegate.swift */; };
 		39219CC11D10C73A00FAEABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39219CC01D10C73A00FAEABB /* Assets.xcassets */; };
 		396EE8091D119C6500057468 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396EE8081D119C6500057468 /* Comic.swift */; };
+		396EE80B1D121E7600057468 /* SMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396EE80A1D121E7600057468 /* SMacro.swift */; };
+		396EE80F1D12218E00057468 /* Image+ImageWithColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396EE80E1D12218E00057468 /* Image+ImageWithColor.swift */; };
 		39C4D0251D10D48E0057135B /* ComicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C4D0241D10D48E0057135B /* ComicAPI.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,8 @@
 		39219CC01D10C73A00FAEABB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		39219CC51D10C73A00FAEABB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		396EE8081D119C6500057468 /* Comic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
+		396EE80A1D121E7600057468 /* SMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMacro.swift; sourceTree = "<group>"; };
+		396EE80E1D12218E00057468 /* Image+ImageWithColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+ImageWithColor.swift"; sourceTree = "<group>"; };
 		39C4D0241D10D48E0057135B /* ComicAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicAPI.swift; sourceTree = "<group>"; };
 		8211487E693D75318478D356 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		940C16CEE0725AF0BA70E3A4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -61,6 +65,7 @@
 		1501E7F51D115420006F4CD3 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
+				396EE80E1D12218E00057468 /* Image+ImageWithColor.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 			children = (
 				39219CB91D10C73A00FAEABB /* AppDelegate.swift */,
 				1501E7EF1D1152E8006F4CD3 /* TabBarController.swift */,
+				396EE80A1D121E7600057468 /* SMacro.swift */,
 				39C4D0201D10D3740057135B /* Models */,
 				1501E80C1D1160C4006F4CD3 /* Controllers */,
 				39C4D0211D10D3740057135B /* Networking */,
@@ -308,12 +314,14 @@
 			files = (
 				1501E7F01D1152E8006F4CD3 /* TabBarController.swift in Sources */,
 				396EE8091D119C6500057468 /* Comic.swift in Sources */,
+				396EE80B1D121E7600057468 /* SMacro.swift in Sources */,
 				3915EEC31D117D7D00BFA73D /* R.generated.swift in Sources */,
 				1501E7F41D1153FC006F4CD3 /* HomePageViewController.swift in Sources */,
 				39219CBA1D10C73A00FAEABB /* AppDelegate.swift in Sources */,
 				1501E7F21D1153C5006F4CD3 /* BookShelfViewController.swift in Sources */,
 				39C4D0251D10D48E0057135B /* ComicAPI.swift in Sources */,
 				1501E80E1D1160D0006F4CD3 /* BaseViewController.swift in Sources */,
+				396EE80F1D12218E00057468 /* Image+ImageWithColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

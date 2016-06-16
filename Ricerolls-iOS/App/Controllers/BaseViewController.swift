@@ -9,10 +9,24 @@
 import UIKit
 
 class BaseViewController: UIViewController {
+    
+    func config() {
+        self.view.backgroundColor = UIColor.whiteColor()
+    }
+    
+    func setupViews() {
+        
+    }
+    
+    func autolayout() {
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor()
+        config()
+        setupViews()
+        autolayout()
         // Do any additional setup after loading the view.
     }
 

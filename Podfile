@@ -18,3 +18,7 @@ pod 'CYLTabBarController'
 pod 'R.swift'
 
 pod 'SnapKit'
+
+pod 'Nuke'
+
+pod 'SwiftDate'
