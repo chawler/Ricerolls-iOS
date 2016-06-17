@@ -15,6 +15,10 @@ class Comic: Mappable {
     var updated_at: NSDate?
     var cover_url = ""
     var title = ""
+    var author = ""
+    var intro = ""
+    var tags: [String] = []
+    var updated_info = ""
     
     required convenience init?(_ map: Map) {
         self.init()
@@ -25,6 +29,10 @@ class Comic: Mappable {
         updated_at <- (map["updated_at"], CustomDateFormatTransform(formatString: "yyyy-MM-dd'T'HH:mm:ssZZZZZ"))
         cover_url <- map["cover_url"]
         title <- map["title"]
+        author <- map["author"]
+        intro <- map["intro"]
+        tags <- map["tags"]
+        updated_info <- map["updated_info"]
     }
 
 }

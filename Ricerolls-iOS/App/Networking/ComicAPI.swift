@@ -11,6 +11,7 @@ import Moya
 
 enum ComicAPI {
     case List
+    case Detail(id: Int)
 }
 
 extension ComicAPI: TargetType {
@@ -19,8 +20,10 @@ extension ComicAPI: TargetType {
     
     var path: String {
         switch self {
-        default:
+        case .List:
             return "/comic"
+        case .Detail(let id):
+            return "/comic/\(id)"
         }
         
     }
@@ -34,7 +37,7 @@ extension ComicAPI: TargetType {
     
     var parameters: [String: AnyObject]? {
         switch self {
-        case .List:
+        default:
             return [:]
         }
     }

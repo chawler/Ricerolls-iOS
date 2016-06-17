@@ -7,67 +7,12 @@
 //
 
 import UIKit
-import Moya
 import RxSwift
 import RxCocoa
 import NSObject_Rx
-import Moya_ObjectMapper
 import SnapKit
 import Nuke
 import SwiftDate
-
-class ComicCell: UICollectionViewCell {
-    
-    lazy var imageView: UIImageView = {
-        let v = UIImageView(image: UIImage.imageWithColor(UIColor.lightGrayColor()))
-        return v
-    }()
-    
-    lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = kFont(13)
-        label.textColor = HexRGB(0x6c6c6c)
-        label.textAlignment = .Center
-        return label
-    }()
-    
-    lazy var timeLabel: UILabel = {
-        let label = UILabel()
-        label.font = kFont(12)
-        label.textColor = HexRGB(0xdcdcdc)
-        label.textAlignment = .Center
-        return label
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        contentView.backgroundColor = UIColor.whiteColor()
-        contentView.addSubview(imageView)
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(timeLabel)
-        
-        imageView.snp_makeConstraints { (make) in
-            make.top.left.equalTo(contentView)
-            make.width.equalTo(contentView)
-            make.height.equalTo(contentView).multipliedBy(0.75)
-        }
-        titleLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(imageView.snp_bottom).offset(5)
-            make.height.equalTo(20)
-            make.left.width.equalTo(contentView)
-        }
-        timeLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(titleLabel.snp_bottom).offset(2)
-            make.height.equalTo(15)
-            make.left.width.equalTo(contentView)
-        }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
 
 internal extension Variable {
     
@@ -90,8 +35,6 @@ private let kCollectionViewInsetRight = kCollectionViewInsetLeft
 
 class HomePageViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    let provider = RxMoyaProvider<ComicAPI>()
-    
     var comics = Variable([Comic]())
     
     lazy var flowLayout: UICollectionViewFlowLayout = {
@@ -112,7 +55,7 @@ class HomePageViewController: BaseViewController, UICollectionViewDataSource, UI
         collectionView.backgroundColor = HexRGB(0xf5f4f0)
         collectionView.registerClass(ComicCell.self, forCellWithReuseIdentifier: kComicCellReuseIdentifier)
         collectionView.contentInset = UIEdgeInsetsMake(0, kCollectionViewInsetLeft, 0, kCollectionViewInsetRight)
-        provider.request(.List)
+        comicProvider.request(.List)
             .filterSuccessfulStatusCodes()
             .mapArray(Comic)
             .bindTo(comics)
@@ -150,6 +93,13 @@ class HomePageViewController: BaseViewController, UICollectionViewDataSource, UI
             cell.timeLabel.text = comic.updated_at?.toString(DateFormat.Custom("yyyy-MM-dd"))
         }
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row < comics.listCount {
+            let comic = comics.value[indexPath.row]
+            self.navigationController?.pushViewController(BookDetailViewController(id: comic.id), animated: true)
+        }
     }
 
     override func didReceiveMemoryWarning() {

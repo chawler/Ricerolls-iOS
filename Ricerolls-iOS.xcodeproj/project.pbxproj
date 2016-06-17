@@ -19,6 +19,10 @@
 		3915EEC31D117D7D00BFA73D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3915EEC21D117D7D00BFA73D /* R.generated.swift */; };
 		39219CBA1D10C73A00FAEABB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39219CB91D10C73A00FAEABB /* AppDelegate.swift */; };
 		39219CC11D10C73A00FAEABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39219CC01D10C73A00FAEABB /* Assets.xcassets */; };
+		396960DE1D1370EC00421A43 /* ComicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396960DD1D1370EC00421A43 /* ComicCell.swift */; };
+		396960E01D13715C00421A43 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396960DF1D13715C00421A43 /* BookDetailViewController.swift */; };
+		396960E21D13759600421A43 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396960E11D13759600421A43 /* Networking.swift */; };
+		396960E41D13791600421A43 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396960E31D13791600421A43 /* NetworkLogger.swift */; };
 		396EE8091D119C6500057468 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396EE8081D119C6500057468 /* Comic.swift */; };
 		396EE80B1D121E7600057468 /* SMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396EE80A1D121E7600057468 /* SMacro.swift */; };
 		396EE80F1D12218E00057468 /* Image+ImageWithColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396EE80E1D12218E00057468 /* Image+ImageWithColor.swift */; };
@@ -39,6 +43,10 @@
 		39219CB91D10C73A00FAEABB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Ricerolls-iOS/App/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		39219CC01D10C73A00FAEABB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		39219CC51D10C73A00FAEABB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		396960DD1D1370EC00421A43 /* ComicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicCell.swift; sourceTree = "<group>"; };
+		396960DF1D13715C00421A43 /* BookDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		396960E11D13759600421A43 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		396960E31D13791600421A43 /* NetworkLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		396EE8081D119C6500057468 /* Comic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
 		396EE80A1D121E7600057468 /* SMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMacro.swift; sourceTree = "<group>"; };
 		396EE80E1D12218E00057468 /* Image+ImageWithColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+ImageWithColor.swift"; sourceTree = "<group>"; };
@@ -120,12 +128,22 @@
 			isa = PBXGroup;
 			children = (
 				39C4D01F1D10D3740057135B /* App */,
+				396960DC1D1370B700421A43 /* MainPage */,
 				1501E7F51D115420006F4CD3 /* Extentions */,
 				1501E7FE1D115C36006F4CD3 /* Resources */,
 				1501E7F11D1153C5006F4CD3 /* BookShelfViewController.swift */,
-				1501E7F31D1153FC006F4CD3 /* HomePageViewController.swift */,
 			);
 			path = "Ricerolls-iOS";
+			sourceTree = "<group>";
+		};
+		396960DC1D1370B700421A43 /* MainPage */ = {
+			isa = PBXGroup;
+			children = (
+				396960DD1D1370EC00421A43 /* ComicCell.swift */,
+				1501E7F31D1153FC006F4CD3 /* HomePageViewController.swift */,
+				396960DF1D13715C00421A43 /* BookDetailViewController.swift */,
+			);
+			path = MainPage;
 			sourceTree = "<group>";
 		};
 		39C4D01F1D10D3740057135B /* App */ = {
@@ -153,6 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				39C4D0241D10D48E0057135B /* ComicAPI.swift */,
+				396960E11D13759600421A43 /* Networking.swift */,
+				396960E31D13791600421A43 /* NetworkLogger.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -312,9 +332,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				396960E41D13791600421A43 /* NetworkLogger.swift in Sources */,
 				1501E7F01D1152E8006F4CD3 /* TabBarController.swift in Sources */,
 				396EE8091D119C6500057468 /* Comic.swift in Sources */,
+				396960E01D13715C00421A43 /* BookDetailViewController.swift in Sources */,
+				396960E21D13759600421A43 /* Networking.swift in Sources */,
 				396EE80B1D121E7600057468 /* SMacro.swift in Sources */,
+				396960DE1D1370EC00421A43 /* ComicCell.swift in Sources */,
 				3915EEC31D117D7D00BFA73D /* R.generated.swift in Sources */,
 				1501E7F41D1153FC006F4CD3 /* HomePageViewController.swift in Sources */,
 				39219CBA1D10C73A00FAEABB /* AppDelegate.swift in Sources */,
