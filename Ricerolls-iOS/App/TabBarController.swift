@@ -21,10 +21,10 @@ class TabBarController: CYLTabBarController {
     
     let itemAttrs: [[NSObject:AnyObject]] = [
         [
-            CYLTabBarItemTitle: "首页"
+            CYLTabBarItemTitle: R.string.genernal.homePage()
         ],
         [
-            CYLTabBarItemTitle: "书架"
+            CYLTabBarItemTitle: R.string.genernal.bookShelf()
         ]
     ]
     

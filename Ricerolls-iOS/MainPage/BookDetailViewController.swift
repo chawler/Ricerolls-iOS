@@ -8,11 +8,21 @@
 
 import UIKit
 import RxSwift
+import Nuke
 
 class BookDetailViewController: BaseViewController {
     
     var id: Int = 0
     var comic = Variable(Comic())
+    
+    let headerBackground = ADBlurImageView()
+    lazy var coverImageView: UIImageView = {
+        let civ = UIImageView()
+        civ.clipsToBounds = true
+        civ.contentMode = .ScaleAspectFill
+        return civ
+    }()
+    let headerView = ComicHeaderView()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -29,6 +39,7 @@ class BookDetailViewController: BaseViewController {
     
     override func config() {
         super.config()
+        navBarHidden = true
         comicProvider.request(.Detail(id: self.id))
             .filterSuccessfulStatusCodes()
             .mapObject(Comic)
@@ -39,10 +50,32 @@ class BookDetailViewController: BaseViewController {
             .filter({ comic -> Bool in
                 return comic.id != 0
             })
-            .driveNext { comic in
+            .driveNext { [weak self] comic in
                 print(comic)
+                self?.headerView.background.setImageWith(comic.cover_url)
+                self?.headerView.coverView.setImageWith(comic.cover_url)
+                self?.headerView.setupTags(comic.tags)
+                self?.headerView.titleLabel.text = comic.title
+                self?.headerView.authorLabel.text = comic.author
             }
             .addDisposableTo(rx_disposeBag)
+    }
+    
+    override func setupViews() {
+        super.setupViews()
+        self.view.addSubviews(
+            [
+                headerView
+            ]
+        )
+    }
+    
+    override func autolayout() {
+        super.autolayout()
+        headerView.snp_makeConstraints { (make) in
+            make.width.equalTo(self.view)
+            make.height.equalTo(self.view).multipliedBy(0.35)
+        }
     }
 
     override func viewDidLoad() {

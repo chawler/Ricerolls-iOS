@@ -16,6 +16,12 @@
 		1501E8011D115D00006F4CD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1501E8031D115D00006F4CD3 /* Main.storyboard */; };
 		1501E8081D115D8A006F4CD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1501E80A1D115D8A006F4CD3 /* LaunchScreen.storyboard */; };
 		1501E80E1D1160D0006F4CD3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1501E80D1D1160D0006F4CD3 /* BaseViewController.swift */; };
+		1597EE7B1D13D860003C78FE /* Genernal.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1597EE7D1D13D860003C78FE /* Genernal.strings */; };
+		1597EE811D13DA1E003C78FE /* ADBlurImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1597EE801D13DA1E003C78FE /* ADBlurImageView.swift */; };
+		1597EE831D13DAB6003C78FE /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1597EE821D13DAB6003C78FE /* CustomView.swift */; };
+		1597EE851D13DB11003C78FE /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1597EE841D13DB11003C78FE /* UIView+Utils.swift */; };
+		1597EE871D13F4FD003C78FE /* UIImageView+WebCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1597EE861D13F4FD003C78FE /* UIImageView+WebCache.swift */; };
+		1597EE891D140132003C78FE /* ComicHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1597EE881D140132003C78FE /* ComicHeaderView.swift */; };
 		3915EEC31D117D7D00BFA73D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3915EEC21D117D7D00BFA73D /* R.generated.swift */; };
 		39219CBA1D10C73A00FAEABB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39219CB91D10C73A00FAEABB /* AppDelegate.swift */; };
 		39219CC11D10C73A00FAEABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39219CC01D10C73A00FAEABB /* Assets.xcassets */; };
@@ -38,6 +44,14 @@
 		1501E8021D115D00006F4CD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1501E8091D115D8A006F4CD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1501E80D1D1160D0006F4CD3 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		1597EE771D13D804003C78FE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		1597EE781D13D804003C78FE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		1597EE7C1D13D860003C78FE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Genernal.strings"; sourceTree = "<group>"; };
+		1597EE801D13DA1E003C78FE /* ADBlurImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADBlurImageView.swift; sourceTree = "<group>"; };
+		1597EE821D13DAB6003C78FE /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		1597EE841D13DB11003C78FE /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
+		1597EE861D13F4FD003C78FE /* UIImageView+WebCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+WebCache.swift"; sourceTree = "<group>"; };
+		1597EE881D140132003C78FE /* ComicHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicHeaderView.swift; sourceTree = "<group>"; };
 		3915EEC21D117D7D00BFA73D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		39219CB61D10C73A00FAEABB /* Ricerolls-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ricerolls-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39219CB91D10C73A00FAEABB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Ricerolls-iOS/App/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
@@ -73,6 +87,8 @@
 		1501E7F51D115420006F4CD3 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
+				1597EE841D13DB11003C78FE /* UIView+Utils.swift */,
+				1597EE861D13F4FD003C78FE /* UIImageView+WebCache.swift */,
 				396EE80E1D12218E00057468 /* Image+ImageWithColor.swift */,
 			);
 			path = Extentions;
@@ -85,6 +101,7 @@
 				39219CC01D10C73A00FAEABB /* Assets.xcassets */,
 				1501E8031D115D00006F4CD3 /* Main.storyboard */,
 				1501E80A1D115D8A006F4CD3 /* LaunchScreen.storyboard */,
+				1597EE7D1D13D860003C78FE /* Genernal.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -104,6 +121,15 @@
 				1501E80D1D1160D0006F4CD3 /* BaseViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1597EE7F1D13DA0B003C78FE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1597EE821D13DAB6003C78FE /* CustomView.swift */,
+				1597EE801D13DA1E003C78FE /* ADBlurImageView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		39219CAD1D10C73A00FAEABB = {
@@ -140,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				396960DD1D1370EC00421A43 /* ComicCell.swift */,
+				1597EE881D140132003C78FE /* ComicHeaderView.swift */,
 				1501E7F31D1153FC006F4CD3 /* HomePageViewController.swift */,
 				396960DF1D13715C00421A43 /* BookDetailViewController.swift */,
 			);
@@ -153,6 +180,7 @@
 				1501E7EF1D1152E8006F4CD3 /* TabBarController.swift */,
 				396EE80A1D121E7600057468 /* SMacro.swift */,
 				39C4D0201D10D3740057135B /* Models */,
+				1597EE7F1D13DA0B003C78FE /* Views */,
 				1501E80C1D1160C4006F4CD3 /* Controllers */,
 				39C4D0211D10D3740057135B /* Networking */,
 			);
@@ -258,6 +286,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1597EE7B1D13D860003C78FE /* Genernal.strings in Resources */,
 				1501E8081D115D8A006F4CD3 /* LaunchScreen.storyboard in Resources */,
 				39219CC11D10C73A00FAEABB /* Assets.xcassets in Resources */,
 				1501E8011D115D00006F4CD3 /* Main.storyboard in Resources */,
@@ -332,6 +361,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1597EE811D13DA1E003C78FE /* ADBlurImageView.swift in Sources */,
+				1597EE831D13DAB6003C78FE /* CustomView.swift in Sources */,
+				1597EE891D140132003C78FE /* ComicHeaderView.swift in Sources */,
 				396960E41D13791600421A43 /* NetworkLogger.swift in Sources */,
 				1501E7F01D1152E8006F4CD3 /* TabBarController.swift in Sources */,
 				396EE8091D119C6500057468 /* Comic.swift in Sources */,
@@ -343,8 +375,10 @@
 				1501E7F41D1153FC006F4CD3 /* HomePageViewController.swift in Sources */,
 				39219CBA1D10C73A00FAEABB /* AppDelegate.swift in Sources */,
 				1501E7F21D1153C5006F4CD3 /* BookShelfViewController.swift in Sources */,
+				1597EE851D13DB11003C78FE /* UIView+Utils.swift in Sources */,
 				39C4D0251D10D48E0057135B /* ComicAPI.swift in Sources */,
 				1501E80E1D1160D0006F4CD3 /* BaseViewController.swift in Sources */,
+				1597EE871D13F4FD003C78FE /* UIImageView+WebCache.swift in Sources */,
 				396EE80F1D12218E00057468 /* Image+ImageWithColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,6 +390,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1501E8021D115D00006F4CD3 /* Base */,
+				1597EE771D13D804003C78FE /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -364,8 +399,17 @@
 			isa = PBXVariantGroup;
 			children = (
 				1501E8091D115D8A006F4CD3 /* Base */,
+				1597EE781D13D804003C78FE /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		1597EE7D1D13D860003C78FE /* Genernal.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1597EE7C1D13D860003C78FE /* zh-Hans */,
+			);
+			name = Genernal.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

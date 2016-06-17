@@ -10,6 +10,11 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
+    var navBarHidden = false
+    
+    var navBarBackImage = UIImage()
+    var navBarShadowImage = UIImage()
+    
     func config() {
         self.view.backgroundColor = UIColor.whiteColor()
     }
@@ -28,6 +33,15 @@ class BaseViewController: UIViewController {
         setupViews()
         autolayout()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if navBarHidden {
+            self.navigationController?.navigationBar.setBackgroundImage(navBarBackImage, forBarMetrics: .Default)
+            self.navigationController?.navigationBar.shadowImage = navBarShadowImage
+        }
     }
 
     override func didReceiveMemoryWarning() {

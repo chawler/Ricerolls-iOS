@@ -98,7 +98,9 @@ class HomePageViewController: BaseViewController, UICollectionViewDataSource, UI
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row < comics.listCount {
             let comic = comics.value[indexPath.row]
-            self.navigationController?.pushViewController(BookDetailViewController(id: comic.id), animated: true)
+            let vc = BookDetailViewController(id: comic.id)
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 
