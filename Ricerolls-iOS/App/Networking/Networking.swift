@@ -8,6 +8,5 @@
 
 import Foundation
 import Moya
-import Moya_ObjectMapper
 
 let comicProvider = RxMoyaProvider<ComicAPI>(plugins: [NetworkLogger(verbose: false)])

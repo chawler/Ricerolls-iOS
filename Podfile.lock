@@ -4,13 +4,6 @@ PODS:
   - KMNavigationBarTransition (0.0.8)
   - Moya (6.5.0):
     - Moya/Core (= 6.5.0)
-  - Moya-ObjectMapper/Core (1.2.1):
-    - Moya (~> 6.4)
-    - ObjectMapper (~> 1.2)
-  - Moya-ObjectMapper/RxSwift (1.2.1):
-    - Moya-ObjectMapper/Core
-    - Moya/RxSwift (~> 6.4)
-    - RxSwift (~> 2.4)
   - Moya/Core (6.5.0):
     - Alamofire (~> 3.0)
     - Result (~> 2.0)
@@ -35,10 +28,10 @@ DEPENDENCIES:
   - CYLTabBarController
   - KMNavigationBarTransition
   - Moya
-  - Moya-ObjectMapper/RxSwift
   - Moya/RxSwift
   - NSObject+Rx
   - Nuke
+  - ObjectMapper
   - R.swift
   - RxCocoa
   - RxSwift
@@ -50,7 +43,6 @@ SPEC CHECKSUMS:
   CYLTabBarController: 239530a5752c7c5ed997948b32fc5d9c270f2774
   KMNavigationBarTransition: e87fb2b3a194b0d7fded5fd560df83c6f43b942f
   Moya: f7a4044719381cc6299f9ad3e0ef05f426f0557b
-  Moya-ObjectMapper: 0adee6d1e81560ecd69da18f87260777fc439b34
   NSObject+Rx: 5d032a7f161602dec6b82dcf12731e91ce15b8da
   Nuke: 75fb602d879372a68679293fdfbd758a1769880d
   ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471

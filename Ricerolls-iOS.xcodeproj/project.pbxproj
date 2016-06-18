@@ -32,6 +32,18 @@
 		396EE8091D119C6500057468 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396EE8081D119C6500057468 /* Comic.swift */; };
 		396EE80B1D121E7600057468 /* SMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396EE80A1D121E7600057468 /* SMacro.swift */; };
 		396EE80F1D12218E00057468 /* Image+ImageWithColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396EE80E1D12218E00057468 /* Image+ImageWithColor.swift */; };
+		3997B0ED1D158A1C00575F61 /* MessagePackPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0CC1D158A1C00575F61 /* MessagePackPacker.m */; };
+		3997B0EE1D158A1C00575F61 /* MessagePackParser+Streaming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0CE1D158A1C00575F61 /* MessagePackParser+Streaming.m */; };
+		3997B0EF1D158A1C00575F61 /* MessagePackParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0D01D158A1C00575F61 /* MessagePackParser.m */; };
+		3997B0F01D158A1C00575F61 /* objectc.c in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0E11D158A1C00575F61 /* objectc.c */; };
+		3997B0F11D158A1C00575F61 /* unpack.c in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0E21D158A1C00575F61 /* unpack.c */; };
+		3997B0F21D158A1C00575F61 /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0E31D158A1C00575F61 /* version.c */; };
+		3997B0F31D158A1C00575F61 /* vrefbuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0E41D158A1C00575F61 /* vrefbuffer.c */; };
+		3997B0F41D158A1C00575F61 /* zone.c in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0E51D158A1C00575F61 /* zone.c */; };
+		3997B0F51D158A1C00575F61 /* NSArray+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0E71D158A1C00575F61 /* NSArray+MessagePack.m */; };
+		3997B0F61D158A1C00575F61 /* NSData+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0E91D158A1C00575F61 /* NSData+MessagePack.m */; };
+		3997B0F71D158A1C00575F61 /* NSDictionary+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0EB1D158A1C00575F61 /* NSDictionary+MessagePack.m */; };
+		3997B0F91D158BBA00575F61 /* Moya-Response+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0F81D158BBA00575F61 /* Moya-Response+Extra.swift */; };
 		39C4D0251D10D48E0057135B /* ComicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C4D0241D10D48E0057135B /* ComicAPI.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +76,41 @@
 		396EE8081D119C6500057468 /* Comic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
 		396EE80A1D121E7600057468 /* SMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMacro.swift; sourceTree = "<group>"; };
 		396EE80E1D12218E00057468 /* Image+ImageWithColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+ImageWithColor.swift"; sourceTree = "<group>"; };
+		3997B0C41D1589F200575F61 /* Ricerolls-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ricerolls-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		3997B0CA1D158A1C00575F61 /* MessagePack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagePack.h; sourceTree = "<group>"; };
+		3997B0CB1D158A1C00575F61 /* MessagePackPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagePackPacker.h; sourceTree = "<group>"; };
+		3997B0CC1D158A1C00575F61 /* MessagePackPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagePackPacker.m; sourceTree = "<group>"; };
+		3997B0CD1D158A1C00575F61 /* MessagePackParser+Streaming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MessagePackParser+Streaming.h"; sourceTree = "<group>"; };
+		3997B0CE1D158A1C00575F61 /* MessagePackParser+Streaming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MessagePackParser+Streaming.m"; sourceTree = "<group>"; };
+		3997B0CF1D158A1C00575F61 /* MessagePackParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagePackParser.h; sourceTree = "<group>"; };
+		3997B0D01D158A1C00575F61 /* MessagePackParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagePackParser.m; sourceTree = "<group>"; };
+		3997B0D31D158A1C00575F61 /* object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = object.h; sourceTree = "<group>"; };
+		3997B0D41D158A1C00575F61 /* pack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pack.h; sourceTree = "<group>"; };
+		3997B0D51D158A1C00575F61 /* pack_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pack_define.h; sourceTree = "<group>"; };
+		3997B0D61D158A1C00575F61 /* pack_template.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pack_template.h; sourceTree = "<group>"; };
+		3997B0D71D158A1C00575F61 /* sbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sbuffer.h; sourceTree = "<group>"; };
+		3997B0D81D158A1C00575F61 /* sysdep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sysdep.h; sourceTree = "<group>"; };
+		3997B0D91D158A1C00575F61 /* unpack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unpack.h; sourceTree = "<group>"; };
+		3997B0DA1D158A1C00575F61 /* unpack_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unpack_define.h; sourceTree = "<group>"; };
+		3997B0DB1D158A1C00575F61 /* unpack_template.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unpack_template.h; sourceTree = "<group>"; };
+		3997B0DC1D158A1C00575F61 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		3997B0DD1D158A1C00575F61 /* vrefbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vrefbuffer.h; sourceTree = "<group>"; };
+		3997B0DE1D158A1C00575F61 /* zbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zbuffer.h; sourceTree = "<group>"; };
+		3997B0DF1D158A1C00575F61 /* zone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zone.h; sourceTree = "<group>"; };
+		3997B0E01D158A1C00575F61 /* msgpack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = msgpack.h; sourceTree = "<group>"; };
+		3997B0E11D158A1C00575F61 /* objectc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = objectc.c; sourceTree = "<group>"; };
+		3997B0E21D158A1C00575F61 /* unpack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unpack.c; sourceTree = "<group>"; };
+		3997B0E31D158A1C00575F61 /* version.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = version.c; sourceTree = "<group>"; };
+		3997B0E41D158A1C00575F61 /* vrefbuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vrefbuffer.c; sourceTree = "<group>"; };
+		3997B0E51D158A1C00575F61 /* zone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zone.c; sourceTree = "<group>"; };
+		3997B0E61D158A1C00575F61 /* NSArray+MessagePack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MessagePack.h"; sourceTree = "<group>"; };
+		3997B0E71D158A1C00575F61 /* NSArray+MessagePack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MessagePack.m"; sourceTree = "<group>"; };
+		3997B0E81D158A1C00575F61 /* NSData+MessagePack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MessagePack.h"; sourceTree = "<group>"; };
+		3997B0E91D158A1C00575F61 /* NSData+MessagePack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MessagePack.m"; sourceTree = "<group>"; };
+		3997B0EA1D158A1C00575F61 /* NSDictionary+MessagePack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+MessagePack.h"; sourceTree = "<group>"; };
+		3997B0EB1D158A1C00575F61 /* NSDictionary+MessagePack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MessagePack.m"; sourceTree = "<group>"; };
+		3997B0EC1D158A1C00575F61 /* TestMsgPack-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestMsgPack-Bridging-Header.h"; sourceTree = "<group>"; };
+		3997B0F81D158BBA00575F61 /* Moya-Response+Extra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moya-Response+Extra.swift"; sourceTree = "<group>"; };
 		39C4D0241D10D48E0057135B /* ComicAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicAPI.swift; sourceTree = "<group>"; };
 		8211487E693D75318478D356 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		940C16CEE0725AF0BA70E3A4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -90,6 +137,7 @@
 				1597EE841D13DB11003C78FE /* UIView+Utils.swift */,
 				1597EE861D13F4FD003C78FE /* UIImageView+WebCache.swift */,
 				396EE80E1D12218E00057468 /* Image+ImageWithColor.swift */,
+				3997B0F81D158BBA00575F61 /* Moya-Response+Extra.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -110,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				3915EEC21D117D7D00BFA73D /* R.generated.swift */,
+				3997B0C41D1589F200575F61 /* Ricerolls-iOS-Bridging-Header.h */,
 				39219CC51D10C73A00FAEABB /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -136,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				39219CB81D10C73A00FAEABB /* Ricerolls-iOS */,
+				3997B0C81D158A1C00575F61 /* Vendors */,
 				39219CB71D10C73A00FAEABB /* Products */,
 				781E49437A021EB304CE3243 /* Pods */,
 				ECCE399FB6DFB70E040314AC /* Frameworks */,
@@ -171,6 +221,70 @@
 				396960DF1D13715C00421A43 /* BookDetailViewController.swift */,
 			);
 			path = MainPage;
+			sourceTree = "<group>";
+		};
+		3997B0C81D158A1C00575F61 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				3997B0C91D158A1C00575F61 /* MessagePack */,
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		3997B0C91D158A1C00575F61 /* MessagePack */ = {
+			isa = PBXGroup;
+			children = (
+				3997B0CA1D158A1C00575F61 /* MessagePack.h */,
+				3997B0CB1D158A1C00575F61 /* MessagePackPacker.h */,
+				3997B0CC1D158A1C00575F61 /* MessagePackPacker.m */,
+				3997B0CD1D158A1C00575F61 /* MessagePackParser+Streaming.h */,
+				3997B0CE1D158A1C00575F61 /* MessagePackParser+Streaming.m */,
+				3997B0CF1D158A1C00575F61 /* MessagePackParser.h */,
+				3997B0D01D158A1C00575F61 /* MessagePackParser.m */,
+				3997B0D11D158A1C00575F61 /* msgpack_src */,
+				3997B0E61D158A1C00575F61 /* NSArray+MessagePack.h */,
+				3997B0E71D158A1C00575F61 /* NSArray+MessagePack.m */,
+				3997B0E81D158A1C00575F61 /* NSData+MessagePack.h */,
+				3997B0E91D158A1C00575F61 /* NSData+MessagePack.m */,
+				3997B0EA1D158A1C00575F61 /* NSDictionary+MessagePack.h */,
+				3997B0EB1D158A1C00575F61 /* NSDictionary+MessagePack.m */,
+				3997B0EC1D158A1C00575F61 /* TestMsgPack-Bridging-Header.h */,
+			);
+			path = MessagePack;
+			sourceTree = "<group>";
+		};
+		3997B0D11D158A1C00575F61 /* msgpack_src */ = {
+			isa = PBXGroup;
+			children = (
+				3997B0D21D158A1C00575F61 /* msgpack */,
+				3997B0E01D158A1C00575F61 /* msgpack.h */,
+				3997B0E11D158A1C00575F61 /* objectc.c */,
+				3997B0E21D158A1C00575F61 /* unpack.c */,
+				3997B0E31D158A1C00575F61 /* version.c */,
+				3997B0E41D158A1C00575F61 /* vrefbuffer.c */,
+				3997B0E51D158A1C00575F61 /* zone.c */,
+			);
+			path = msgpack_src;
+			sourceTree = "<group>";
+		};
+		3997B0D21D158A1C00575F61 /* msgpack */ = {
+			isa = PBXGroup;
+			children = (
+				3997B0D31D158A1C00575F61 /* object.h */,
+				3997B0D41D158A1C00575F61 /* pack.h */,
+				3997B0D51D158A1C00575F61 /* pack_define.h */,
+				3997B0D61D158A1C00575F61 /* pack_template.h */,
+				3997B0D71D158A1C00575F61 /* sbuffer.h */,
+				3997B0D81D158A1C00575F61 /* sysdep.h */,
+				3997B0D91D158A1C00575F61 /* unpack.h */,
+				3997B0DA1D158A1C00575F61 /* unpack_define.h */,
+				3997B0DB1D158A1C00575F61 /* unpack_template.h */,
+				3997B0DC1D158A1C00575F61 /* version.h */,
+				3997B0DD1D158A1C00575F61 /* vrefbuffer.h */,
+				3997B0DE1D158A1C00575F61 /* zbuffer.h */,
+				3997B0DF1D158A1C00575F61 /* zone.h */,
+			);
+			path = msgpack;
 			sourceTree = "<group>";
 		};
 		39C4D01F1D10D3740057135B /* App */ = {
@@ -363,21 +477,33 @@
 			files = (
 				1597EE811D13DA1E003C78FE /* ADBlurImageView.swift in Sources */,
 				1597EE831D13DAB6003C78FE /* CustomView.swift in Sources */,
+				3997B0F91D158BBA00575F61 /* Moya-Response+Extra.swift in Sources */,
+				3997B0F01D158A1C00575F61 /* objectc.c in Sources */,
+				3997B0F11D158A1C00575F61 /* unpack.c in Sources */,
 				1597EE891D140132003C78FE /* ComicHeaderView.swift in Sources */,
 				396960E41D13791600421A43 /* NetworkLogger.swift in Sources */,
+				3997B0F41D158A1C00575F61 /* zone.c in Sources */,
 				1501E7F01D1152E8006F4CD3 /* TabBarController.swift in Sources */,
+				3997B0F61D158A1C00575F61 /* NSData+MessagePack.m in Sources */,
 				396EE8091D119C6500057468 /* Comic.swift in Sources */,
 				396960E01D13715C00421A43 /* BookDetailViewController.swift in Sources */,
 				396960E21D13759600421A43 /* Networking.swift in Sources */,
 				396EE80B1D121E7600057468 /* SMacro.swift in Sources */,
 				396960DE1D1370EC00421A43 /* ComicCell.swift in Sources */,
+				3997B0EE1D158A1C00575F61 /* MessagePackParser+Streaming.m in Sources */,
+				3997B0EF1D158A1C00575F61 /* MessagePackParser.m in Sources */,
 				3915EEC31D117D7D00BFA73D /* R.generated.swift in Sources */,
 				1501E7F41D1153FC006F4CD3 /* HomePageViewController.swift in Sources */,
+				3997B0ED1D158A1C00575F61 /* MessagePackPacker.m in Sources */,
 				39219CBA1D10C73A00FAEABB /* AppDelegate.swift in Sources */,
 				1501E7F21D1153C5006F4CD3 /* BookShelfViewController.swift in Sources */,
 				1597EE851D13DB11003C78FE /* UIView+Utils.swift in Sources */,
+				3997B0F31D158A1C00575F61 /* vrefbuffer.c in Sources */,
+				3997B0F21D158A1C00575F61 /* version.c in Sources */,
+				3997B0F51D158A1C00575F61 /* NSArray+MessagePack.m in Sources */,
 				39C4D0251D10D48E0057135B /* ComicAPI.swift in Sources */,
 				1501E80E1D1160D0006F4CD3 /* BaseViewController.swift in Sources */,
+				3997B0F71D158A1C00575F61 /* NSDictionary+MessagePack.m in Sources */,
 				1597EE871D13F4FD003C78FE /* UIImageView+WebCache.swift in Sources */,
 				396EE80F1D12218E00057468 /* Image+ImageWithColor.swift in Sources */,
 			);
@@ -503,11 +629,14 @@
 			baseConfigurationReference = 940C16CEE0725AF0BA70E3A4 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Ricerolls-iOS/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.evertrip.Ricerolls-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ricerolls-iOS/Resources/Ricerolls-iOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -516,11 +645,13 @@
 			baseConfigurationReference = 8211487E693D75318478D356 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Ricerolls-iOS/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.evertrip.Ricerolls-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ricerolls-iOS/Resources/Ricerolls-iOS-Bridging-Header.h";
 			};
 			name = Release;
 		};
