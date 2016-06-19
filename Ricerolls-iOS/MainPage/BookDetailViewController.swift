@@ -8,21 +8,34 @@
 
 import UIKit
 import RxSwift
-import Nuke
+import SnapKit
 
-class BookDetailViewController: BaseViewController {
+private let kComicHeaderReuseIdentifier = "kComicHeaderReuseIdentifier"
+private let kChapterCellReuseIdentifier = "kChapterCellReuseIdentifier"
+
+class BookDetailViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var id: Int = 0
     var comic = Variable(Comic())
+    var topConstraint: Constraint? = nil
+    var heightConstraint: Constraint? = nil
     
-    let headerBackground = ADBlurImageView()
-    lazy var coverImageView: UIImageView = {
-        let civ = UIImageView()
-        civ.clipsToBounds = true
-        civ.contentMode = .ScaleAspectFill
-        return civ
+    lazy var flowLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSizeMake(100, 44)
+        layout.headerReferenceSize = CGSizeMake(kDeviceWidth, kDeviceHeight*0.35)
+        layout.sectionInset = UIEdgeInsetsMake(0, 16, 0, 16)
+        return layout
     }()
+    
     let headerView = ComicHeaderView()
+    
+    lazy var collectionView: UICollectionView = {
+        let v = UICollectionView(frame: CGRectZero, collectionViewLayout: self.flowLayout)
+        v.dataSource = self
+        v.delegate = self
+        return v
+    }()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -40,6 +53,10 @@ class BookDetailViewController: BaseViewController {
     override func config() {
         super.config()
         navBarHidden = true
+        self.automaticallyAdjustsScrollViewInsets = false
+        collectionView.backgroundColor = HexRGB(0xf5f4f0)
+        collectionView.registerClass(ChapterCell.self, forCellWithReuseIdentifier: kChapterCellReuseIdentifier)
+        
         comicProvider.request(.Detail(id: self.id))
             .filterSuccessfulStatusCodes()
             .mapObject(Comic)
@@ -51,12 +68,8 @@ class BookDetailViewController: BaseViewController {
                 return comic.id != 0
             })
             .driveNext { [weak self] comic in
-                print(comic)
-                self?.headerView.background.setImageWith(comic.cover_url)
-                self?.headerView.coverView.setImageWith(comic.cover_url)
-                self?.headerView.setupTags(comic.tags)
-                self?.headerView.titleLabel.text = comic.title
-                self?.headerView.authorLabel.text = comic.author
+                self?.headerView.layoutWithData(comic)
+                self?.collectionView.reloadData()
             }
             .addDisposableTo(rx_disposeBag)
     }
@@ -65,16 +78,22 @@ class BookDetailViewController: BaseViewController {
         super.setupViews()
         self.view.addSubviews(
             [
-                headerView
+                collectionView
             ]
         )
+        collectionView.addSubview(headerView)
     }
     
     override func autolayout() {
         super.autolayout()
+        collectionView.snp_makeConstraints { (make) in
+            make.edges.equalTo(self.view)
+        }
         headerView.snp_makeConstraints { (make) in
-            make.width.equalTo(self.view)
-            make.height.equalTo(self.view).multipliedBy(0.35)
+            self.topConstraint = make.top.equalTo(collectionView).constraint
+            make.left.equalTo(collectionView)
+            make.width.equalTo(collectionView)
+            self.heightConstraint = make.height.equalTo(collectionView).multipliedBy(0.35).constraint
         }
     }
 
@@ -88,6 +107,30 @@ class BookDetailViewController: BaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return comic.value.chapters?.count ?? 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kChapterCellReuseIdentifier, forIndexPath: indexPath) as! ChapterCell
+        let chapter = comic.value.chapters![indexPath.row]
+        cell.titleLabel.text = "\(chapter.index)"
+        return cell
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        if offsetY <= 0 {
+            if let constraint = self.topConstraint {
+                constraint.updateOffset(offsetY)
+            }
+            if let constraint = self.heightConstraint {
+                constraint.updateOffset(-offsetY)
+            }
+        }
+    }
+
     
 
     /*

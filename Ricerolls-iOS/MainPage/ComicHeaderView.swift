@@ -47,8 +47,7 @@ class ComicHeaderView: CustomView {
     override func autolayout() {
         super.autolayout()
         background.snp_makeConstraints { (make) in
-            make.width.equalTo(self)
-            make.height.equalTo(self)
+            make.edges.equalTo(self)
         }
         coverView.snp_makeConstraints { (make) in
             make.width.equalTo(self).multipliedBy(0.35)
@@ -94,6 +93,16 @@ class ComicHeaderView: CustomView {
                 make.height.equalTo(18)
             })
             lastView = label
+        }
+    }
+    
+    func layoutWithData(data: AnyObject) {
+        if let comic = data as? Comic {
+            self.background.setImageWith(comic.cover_url)
+            self.coverView.setImageWith(comic.cover_url)
+            self.setupTags(comic.tags)
+            self.titleLabel.text = comic.title
+            self.authorLabel.text = comic.author
         }
     }
 

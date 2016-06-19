@@ -19,6 +19,7 @@ class Comic: Mappable {
     var intro = ""
     var tags: [String] = []
     var updated_info = ""
+    var chapters: [Chapter]?
     
     required convenience init?(_ map: Map) {
         self.init()
@@ -32,6 +33,7 @@ class Comic: Mappable {
         author <- map["author"]
         intro <- map["intro"]
         tags <- map["tags"]
+        chapters <- map["chapters"]
         updated_info <- map["updated_info"]
     }
 

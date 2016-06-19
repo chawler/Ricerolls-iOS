@@ -45,6 +45,9 @@
 		3997B0F71D158A1C00575F61 /* NSDictionary+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0EB1D158A1C00575F61 /* NSDictionary+MessagePack.m */; };
 		3997B0F91D158BBA00575F61 /* Moya-Response+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0F81D158BBA00575F61 /* Moya-Response+Extra.swift */; };
 		3997B0FB1D159A0C00575F61 /* GenericParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0FA1D159A0C00575F61 /* GenericParams.swift */; };
+		39B3D5361D16DD9C007B8B09 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B3D5351D16DD9C007B8B09 /* Chapter.swift */; };
+		39B3D5381D16E6D0007B8B09 /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B3D5371D16E6D0007B8B09 /* ChapterCell.swift */; };
+		39B3D53A1D16E752007B8B09 /* BaseCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B3D5391D16E752007B8B09 /* BaseCollectionCell.swift */; };
 		39C4D0251D10D48E0057135B /* ComicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C4D0241D10D48E0057135B /* ComicAPI.swift */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +116,9 @@
 		3997B0EC1D158A1C00575F61 /* TestMsgPack-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestMsgPack-Bridging-Header.h"; sourceTree = "<group>"; };
 		3997B0F81D158BBA00575F61 /* Moya-Response+Extra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moya-Response+Extra.swift"; sourceTree = "<group>"; };
 		3997B0FA1D159A0C00575F61 /* GenericParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericParams.swift; sourceTree = "<group>"; };
+		39B3D5351D16DD9C007B8B09 /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
+		39B3D5371D16E6D0007B8B09 /* ChapterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterCell.swift; sourceTree = "<group>"; };
+		39B3D5391D16E752007B8B09 /* BaseCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionCell.swift; sourceTree = "<group>"; };
 		39C4D0241D10D48E0057135B /* ComicAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicAPI.swift; sourceTree = "<group>"; };
 		8211487E693D75318478D356 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		940C16CEE0725AF0BA70E3A4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -178,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				1597EE821D13DAB6003C78FE /* CustomView.swift */,
+				39B3D5391D16E752007B8B09 /* BaseCollectionCell.swift */,
 				1597EE801D13DA1E003C78FE /* ADBlurImageView.swift */,
 			);
 			path = Views;
@@ -218,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				396960DD1D1370EC00421A43 /* ComicCell.swift */,
+				39B3D5371D16E6D0007B8B09 /* ChapterCell.swift */,
 				1597EE881D140132003C78FE /* ComicHeaderView.swift */,
 				1501E7F31D1153FC006F4CD3 /* HomePageViewController.swift */,
 				396960DF1D13715C00421A43 /* BookDetailViewController.swift */,
@@ -307,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				396EE8081D119C6500057468 /* Comic.swift */,
+				39B3D5351D16DD9C007B8B09 /* Chapter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -377,6 +386,7 @@
 				TargetAttributes = {
 					39219CB51D10C73A00FAEABB = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 5K276G64BM;
 					};
 				};
 			};
@@ -493,12 +503,15 @@
 				396960E21D13759600421A43 /* Networking.swift in Sources */,
 				396EE80B1D121E7600057468 /* SMacro.swift in Sources */,
 				396960DE1D1370EC00421A43 /* ComicCell.swift in Sources */,
+				39B3D5381D16E6D0007B8B09 /* ChapterCell.swift in Sources */,
 				3997B0FB1D159A0C00575F61 /* GenericParams.swift in Sources */,
 				3997B0EE1D158A1C00575F61 /* MessagePackParser+Streaming.m in Sources */,
 				3997B0EF1D158A1C00575F61 /* MessagePackParser.m in Sources */,
 				3915EEC31D117D7D00BFA73D /* R.generated.swift in Sources */,
+				39B3D53A1D16E752007B8B09 /* BaseCollectionCell.swift in Sources */,
 				1501E7F41D1153FC006F4CD3 /* HomePageViewController.swift in Sources */,
 				3997B0ED1D158A1C00575F61 /* MessagePackPacker.m in Sources */,
+				39B3D5361D16DD9C007B8B09 /* Chapter.swift in Sources */,
 				39219CBA1D10C73A00FAEABB /* AppDelegate.swift in Sources */,
 				1501E7F21D1153C5006F4CD3 /* BookShelfViewController.swift in Sources */,
 				1597EE851D13DB11003C78FE /* UIView+Utils.swift in Sources */,
@@ -635,10 +648,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Ricerolls-iOS/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.evertrip.Ricerolls-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ricerolls-iOS/Resources/Ricerolls-iOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -651,10 +666,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Ricerolls-iOS/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.evertrip.Ricerolls-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ricerolls-iOS/Resources/Ricerolls-iOS-Bridging-Header.h";
 			};
 			name = Release;
