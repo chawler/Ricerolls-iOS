@@ -7,12 +7,34 @@
 //
 
 import Foundation
-import Nuke
+import Kingfisher
+
+private var kUIImageViewURLCacheKey: UInt8 = 0
+private var sharedURLCache = [Int: String]()
 
 extension UIImageView {
     
     func setImageWith(urlString: String) {
-        self.nk_setImageWith(NSURL(string: urlString)!)
+        
+        let imageViewKey = self.hashValue
+        sharedURLCache[imageViewKey] = urlString
+        
+        self.kf_setImageWithURL(NSURL(string: urlString)!)
+        
+//        ImageDownloader.defaultDownloader.downloadImageWithURL(NSURL(string: urlString)!, progressBlock: nil) { (image, error, imageURL, originalData) in
+//            
+//            if error != nil {
+//                
+//            } else {
+//                if let url = sharedURLCache[imageViewKey] {
+//                    if url == imageURL?.absoluteString {
+//                        self.image = image
+//                        sharedURLCache.removeValueForKey(imageViewKey)
+//                    }
+//                }
+//            }
+//            
+//        }
     }
     
 }

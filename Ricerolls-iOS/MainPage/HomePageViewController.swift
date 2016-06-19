@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 import NSObject_Rx
 import SnapKit
-import Nuke
 import SwiftDate
 
 internal extension Variable {
@@ -89,7 +88,7 @@ class HomePageViewController: BaseViewController, UICollectionViewDataSource, UI
         if indexPath.row < comics.listCount {
             let comic = comics.value[indexPath.row]
             cell.titleLabel.text = comic.title
-            cell.imageView.nk_setImageWith(NSURL(string: comic.cover_url)!)
+            cell.imageView.setImageWith(comic.cover_url)
             cell.timeLabel.text = comic.updated_at?.toString(DateFormat.Custom("yyyy-MM-dd"))
         }
         return cell
