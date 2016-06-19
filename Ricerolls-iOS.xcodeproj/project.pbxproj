@@ -44,6 +44,7 @@
 		3997B0F61D158A1C00575F61 /* NSData+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0E91D158A1C00575F61 /* NSData+MessagePack.m */; };
 		3997B0F71D158A1C00575F61 /* NSDictionary+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0EB1D158A1C00575F61 /* NSDictionary+MessagePack.m */; };
 		3997B0F91D158BBA00575F61 /* Moya-Response+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0F81D158BBA00575F61 /* Moya-Response+Extra.swift */; };
+		3997B0FB1D159A0C00575F61 /* GenericParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0FA1D159A0C00575F61 /* GenericParams.swift */; };
 		39C4D0251D10D48E0057135B /* ComicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C4D0241D10D48E0057135B /* ComicAPI.swift */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +112,7 @@
 		3997B0EB1D158A1C00575F61 /* NSDictionary+MessagePack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MessagePack.m"; sourceTree = "<group>"; };
 		3997B0EC1D158A1C00575F61 /* TestMsgPack-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestMsgPack-Bridging-Header.h"; sourceTree = "<group>"; };
 		3997B0F81D158BBA00575F61 /* Moya-Response+Extra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moya-Response+Extra.swift"; sourceTree = "<group>"; };
+		3997B0FA1D159A0C00575F61 /* GenericParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericParams.swift; sourceTree = "<group>"; };
 		39C4D0241D10D48E0057135B /* ComicAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicAPI.swift; sourceTree = "<group>"; };
 		8211487E693D75318478D356 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		940C16CEE0725AF0BA70E3A4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				39C4D0241D10D48E0057135B /* ComicAPI.swift */,
 				396960E11D13759600421A43 /* Networking.swift */,
 				396960E31D13791600421A43 /* NetworkLogger.swift */,
+				3997B0FA1D159A0C00575F61 /* GenericParams.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				396960E21D13759600421A43 /* Networking.swift in Sources */,
 				396EE80B1D121E7600057468 /* SMacro.swift in Sources */,
 				396960DE1D1370EC00421A43 /* ComicCell.swift in Sources */,
+				3997B0FB1D159A0C00575F61 /* GenericParams.swift in Sources */,
 				3997B0EE1D158A1C00575F61 /* MessagePackParser+Streaming.m in Sources */,
 				3997B0EF1D158A1C00575F61 /* MessagePackParser.m in Sources */,
 				3915EEC31D117D7D00BFA73D /* R.generated.swift in Sources */,

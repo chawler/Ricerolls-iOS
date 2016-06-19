@@ -24,3 +24,5 @@ pod 'Nuke'
 pod 'SwiftDate'
 
 pod 'KMNavigationBarTransition'
+
+pod 'RNCryptor'

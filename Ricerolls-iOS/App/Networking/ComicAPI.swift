@@ -36,10 +36,13 @@ extension ComicAPI: TargetType {
     }
     
     var parameters: [String: AnyObject]? {
+        var params = [String: AnyObject]()
+        GenericParams.fill(&params)
         switch self {
         default:
-            return [:]
+            break
         }
+        return params
     }
     
     var sampleData: NSData {

@@ -18,6 +18,7 @@ PODS:
     - R.swift.Library (~> 2.1.0)
   - R.swift.Library (2.1.0)
   - Result (2.0.0)
+  - RNCryptor (4.0.0)
   - RxCocoa (2.5.0):
     - RxSwift (~> 2.5)
   - RxSwift (2.5.0)
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - Nuke
   - ObjectMapper
   - R.swift
+  - RNCryptor
   - RxCocoa
   - RxSwift
   - SnapKit
@@ -49,6 +51,7 @@ SPEC CHECKSUMS:
   R.swift: 38b2191a603c3d491a09baddfb4ccc7aa9be4d9d
   R.swift.Library: e5e077ed04f6867a95676af491650091b23518e9
   Result: 9e75e1111c774c6ac594e14907b15057053a7959
+  RNCryptor: 59d6483908115af5c12b884db23392024e52a5fe
   RxCocoa: e1b1562e57a554d0fb2aabf9d71b637f177257c7
   RxSwift: 402b41a50e922a0368fc14cb3bc9f4427920e8ae
   SnapKit: 2756fe24b706367af224c9c508d2f9166d03354c
