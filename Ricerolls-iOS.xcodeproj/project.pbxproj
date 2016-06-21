@@ -23,6 +23,7 @@
 		1597EE871D13F4FD003C78FE /* UIImageView+WebCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1597EE861D13F4FD003C78FE /* UIImageView+WebCache.swift */; };
 		1597EE891D140132003C78FE /* ComicHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1597EE881D140132003C78FE /* ComicHeaderView.swift */; };
 		15DC0FF11D1951A400D2B1EB /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC0FF01D1951A400D2B1EB /* AppContext.swift */; };
+		390FC7D71D19A9CE007F1DB3 /* UINavigationItem+CustomBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390FC7D61D19A9CE007F1DB3 /* UINavigationItem+CustomBack.swift */; };
 		3915EEC31D117D7D00BFA73D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3915EEC21D117D7D00BFA73D /* R.generated.swift */; };
 		39219CBA1D10C73A00FAEABB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39219CB91D10C73A00FAEABB /* AppDelegate.swift */; };
 		39219CC11D10C73A00FAEABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39219CC01D10C73A00FAEABB /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		1597EE861D13F4FD003C78FE /* UIImageView+WebCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+WebCache.swift"; sourceTree = "<group>"; };
 		1597EE881D140132003C78FE /* ComicHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicHeaderView.swift; sourceTree = "<group>"; };
 		15DC0FF01D1951A400D2B1EB /* AppContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
+		390FC7D61D19A9CE007F1DB3 /* UINavigationItem+CustomBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+CustomBack.swift"; sourceTree = "<group>"; };
 		3915EEC21D117D7D00BFA73D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		39219CB61D10C73A00FAEABB /* Ricerolls-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ricerolls-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39219CB91D10C73A00FAEABB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Ricerolls-iOS/App/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
@@ -152,6 +154,7 @@
 				1597EE861D13F4FD003C78FE /* UIImageView+WebCache.swift */,
 				396EE80E1D12218E00057468 /* Image+ImageWithColor.swift */,
 				3997B0F81D158BBA00575F61 /* Moya-Response+Extra.swift */,
+				390FC7D61D19A9CE007F1DB3 /* UINavigationItem+CustomBack.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				3997B0ED1D158A1C00575F61 /* MessagePackPacker.m in Sources */,
 				39B3D5361D16DD9C007B8B09 /* Chapter.swift in Sources */,
 				39219CBA1D10C73A00FAEABB /* AppDelegate.swift in Sources */,
+				390FC7D71D19A9CE007F1DB3 /* UINavigationItem+CustomBack.swift in Sources */,
 				1501E7F21D1153C5006F4CD3 /* BookShelfViewController.swift in Sources */,
 				1597EE851D13DB11003C78FE /* UIView+Utils.swift in Sources */,
 				3997B0F31D158A1C00575F61 /* vrefbuffer.c in Sources */,
