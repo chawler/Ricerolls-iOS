@@ -11,13 +11,6 @@ import Kingfisher
 
 class AppContext {
     
-    static let mangaManager: KingfisherManager = {
-        let downloader = ImageDownloader(name: "manga")
-        let cache = ImageCache(name: "manga")
-        let manager = KingfisherManager()
-        manager.downloader = downloader
-        manager.cache = cache
-        return manager
-    }()
+    static let downloader = ImageDownloader(name: "manga")
 
 }

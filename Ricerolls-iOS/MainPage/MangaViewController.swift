@@ -25,6 +25,14 @@ class MangaViewController: BaseViewController, UIScrollViewDelegate {
     lazy var visibleImageViews = Set<UIImageView>()
     lazy var reusedImageViews = Set<UIImageView>()
     
+    lazy var imageCache: ImageCache = {
+        let name = "\(self.chapter.value.id)"
+        let dstPath = NSSearchPathForDirectoriesInDomains(.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).first!
+        let cache: ImageCache = ImageCache(name: name, path: (dstPath as NSString).stringByAppendingPathComponent("chapters"))
+        cache.maxMemoryCost = 30
+        return cache
+    }()
+    
     var pages: Int {
         return chapter.value.pages
     }
@@ -54,9 +62,15 @@ class MangaViewController: BaseViewController, UIScrollViewDelegate {
             .addDisposableTo(rx_disposeBag)
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.imageCache.clearMemoryCache()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        self.imageCache.clearMemoryCache()
         // Dispose of any resources that can be recreated.
     }
     
@@ -124,6 +138,7 @@ class MangaViewController: BaseViewController, UIScrollViewDelegate {
         } else {
             imageView = UIImageView()
             imageView?.contentMode = .ScaleAspectFit
+            imageView?.clipsToBounds = true
         }
         
         let bounds = scrollView.bounds
@@ -132,18 +147,21 @@ class MangaViewController: BaseViewController, UIScrollViewDelegate {
         imageView?.tag = index
         imageView?.frame = imageViewFrame
         
-        if index < pages {
-            let file = chapter.value.files![index]
+        if let file = chapter.value.files?[index] {
             let url = "http://idx1.hamreus.com:8080\(chapter.value.path)\(file)"
-            KingfisherManager.sharedManager.downloader.requestModifier = { request in
+            AppContext.downloader.requestModifier = { request in
                 request.addValue(self.chapter.value.origin_url, forHTTPHeaderField: "Referer")
             }
             print(url)
-            imageView?.setImageWith(url)
+            imageView?.setImageWith(url, cacheTarget: self.imageCache)
         }
         
         visibleImageViews.insert(imageView!)
         scrollView.addSubview(imageView!)
+    }
+    
+    deinit {
+        self.imageCache.clearMemoryCache()
     }
 
 }

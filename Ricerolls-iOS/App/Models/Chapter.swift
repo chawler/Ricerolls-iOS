@@ -46,6 +46,7 @@ class Chapter: Mappable {
     var pages = 0
     var name = ""
     var path = ""
+    var comic_id = ""
     var origin_url = ""
     var files: [String]?
     
@@ -59,6 +60,7 @@ class Chapter: Mappable {
         index <- map["index"]
         name <- map["name"]
         path <- map["path"]
+        comic_id <- map["comic_id"]
         origin_url <- map["origin_url"]
         files <- (map["files"], kFilesTransform())
     }
