@@ -22,6 +22,7 @@
 		1597EE851D13DB11003C78FE /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1597EE841D13DB11003C78FE /* UIView+Utils.swift */; };
 		1597EE871D13F4FD003C78FE /* UIImageView+WebCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1597EE861D13F4FD003C78FE /* UIImageView+WebCache.swift */; };
 		1597EE891D140132003C78FE /* ComicHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1597EE881D140132003C78FE /* ComicHeaderView.swift */; };
+		15DC0FF11D1951A400D2B1EB /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC0FF01D1951A400D2B1EB /* AppContext.swift */; };
 		3915EEC31D117D7D00BFA73D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3915EEC21D117D7D00BFA73D /* R.generated.swift */; };
 		39219CBA1D10C73A00FAEABB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39219CB91D10C73A00FAEABB /* AppDelegate.swift */; };
 		39219CC11D10C73A00FAEABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39219CC01D10C73A00FAEABB /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 		1597EE841D13DB11003C78FE /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		1597EE861D13F4FD003C78FE /* UIImageView+WebCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+WebCache.swift"; sourceTree = "<group>"; };
 		1597EE881D140132003C78FE /* ComicHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicHeaderView.swift; sourceTree = "<group>"; };
+		15DC0FF01D1951A400D2B1EB /* AppContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
 		3915EEC21D117D7D00BFA73D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		39219CB61D10C73A00FAEABB /* Ricerolls-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ricerolls-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39219CB91D10C73A00FAEABB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Ricerolls-iOS/App/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
@@ -314,6 +316,7 @@
 		39C4D01F1D10D3740057135B /* App */ = {
 			isa = PBXGroup;
 			children = (
+				15DC0FF01D1951A400D2B1EB /* AppContext.swift */,
 				39219CB91D10C73A00FAEABB /* AppDelegate.swift */,
 				1501E7EF1D1152E8006F4CD3 /* TabBarController.swift */,
 				396EE80A1D121E7600057468 /* SMacro.swift */,
@@ -515,6 +518,7 @@
 				396EE8091D119C6500057468 /* Comic.swift in Sources */,
 				396960E01D13715C00421A43 /* BookDetailViewController.swift in Sources */,
 				396960E21D13759600421A43 /* Networking.swift in Sources */,
+				15DC0FF11D1951A400D2B1EB /* AppContext.swift in Sources */,
 				396EE80B1D121E7600057468 /* SMacro.swift in Sources */,
 				396960DE1D1370EC00421A43 /* ComicCell.swift in Sources */,
 				39B3D5381D16E6D0007B8B09 /* ChapterCell.swift in Sources */,
