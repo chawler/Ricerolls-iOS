@@ -127,3 +127,11 @@ func getRandomColor() -> UIColor{
     return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
     
 }
+
+func runAsyncOnMain(block: dispatch_block_t) {
+    dispatch_async(dispatch_get_main_queue(), block)
+}
+
+func runAsyncOnBackground(block: dispatch_block_t) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), block)
+}

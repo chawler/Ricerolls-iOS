@@ -12,6 +12,8 @@ class ComicCell: UICollectionViewCell {
     
     lazy var imageView: UIImageView = {
         let v = UIImageView(image: UIImage.imageWithColor(UIColor.lightGrayColor()))
+        v.contentMode = .ScaleAspectFill
+        v.clipsToBounds = true
         return v
     }()
     

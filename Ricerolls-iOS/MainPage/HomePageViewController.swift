@@ -89,7 +89,12 @@ class HomePageViewController: BaseViewController, UICollectionViewDataSource, UI
             let comic = comics.value[indexPath.row]
             cell.titleLabel.text = comic.title
             cell.imageView.setImageWith(comic.cover_url)
-            cell.timeLabel.text = comic.updated_at?.toString(DateFormat.Custom("yyyy-MM-dd"))
+            runAsyncOnBackground({
+                let dateString = comic.updated_at?.toString(DateFormat.Custom("yyyy-MM-dd"))
+                runAsyncOnMain({
+                    cell.timeLabel.text = dateString
+                })
+            })
         }
         return cell
     }
