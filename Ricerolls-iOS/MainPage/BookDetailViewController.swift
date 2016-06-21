@@ -10,6 +10,8 @@ import UIKit
 import RxSwift
 import SnapKit
 
+private let kCollectionViewItemWidth = kDeviceWidth * 0.27
+private let kCollectionViewItemHeight: CGFloat = 44
 private let kComicHeaderReuseIdentifier = "kComicHeaderReuseIdentifier"
 private let kChapterCellReuseIdentifier = "kChapterCellReuseIdentifier"
 
@@ -21,7 +23,7 @@ class BookDetailViewController: BaseViewController, UICollectionViewDelegate, UI
     
     lazy var flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSizeMake(100, 44)
+        layout.itemSize = CGSizeMake(kCollectionViewItemWidth, kCollectionViewItemHeight)
         layout.headerReferenceSize = CGSizeMake(kDeviceWidth, kDeviceHeight*0.35)
         layout.sectionInset = UIEdgeInsetsMake(0, 16, 0, 16)
         return layout
