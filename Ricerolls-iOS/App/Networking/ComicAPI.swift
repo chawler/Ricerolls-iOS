@@ -12,6 +12,7 @@ import Moya
 enum ComicAPI {
     case List
     case Detail(id: Int)
+    case Chapter(comicId: Int, id: Int)
 }
 
 extension ComicAPI: TargetType {
@@ -24,6 +25,8 @@ extension ComicAPI: TargetType {
             return "/comic"
         case .Detail(let id):
             return "/comic/\(id)"
+        case .Chapter(let comicId, let id):
+            return "/comic/\(comicId)/chapter/\(id)"
         }
         
     }

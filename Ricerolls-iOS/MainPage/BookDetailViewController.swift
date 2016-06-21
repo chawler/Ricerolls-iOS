@@ -16,7 +16,6 @@ private let kChapterCellReuseIdentifier = "kChapterCellReuseIdentifier"
 class BookDetailViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var id: Int = 0
-    var comic = Variable(Comic())
     var topConstraint: Constraint? = nil
     var heightConstraint: Constraint? = nil
     
@@ -60,10 +59,10 @@ class BookDetailViewController: BaseViewController, UICollectionViewDelegate, UI
         comicProvider.request(.Detail(id: self.id))
             .filterSuccessfulStatusCodes()
             .mapObject(Comic)
-            .bindTo(comic)
+            .bindTo(MangaViewModel.comic)
             .addDisposableTo(rx_disposeBag)
         
-        comic.asDriver()
+        MangaViewModel.comic.asDriver()
             .filter({ comic -> Bool in
                 return comic.id != 0
             })
@@ -109,14 +108,25 @@ class BookDetailViewController: BaseViewController, UICollectionViewDelegate, UI
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return comic.value.chapters?.count ?? 0
+        return MangaViewModel.comic.value.chapters?.count ?? 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kChapterCellReuseIdentifier, forIndexPath: indexPath) as! ChapterCell
-        let chapter = comic.value.chapters![indexPath.row]
-        cell.titleLabel.text = "\(chapter.index)"
+        let chapter = MangaViewModel.chapters[indexPath.row]
+        if chapter.index == 0 {
+            cell.titleLabel.text = chapter.name
+        } else {
+            cell.titleLabel.text = "\(chapter.index)"
+        }
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        MangaViewModel.selectedIndex = indexPath.row
+        let vc = MangaViewController()
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {

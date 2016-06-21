@@ -16,10 +16,12 @@ extension UIImageView {
     
     func setImageWith(urlString: String) {
         
-        let imageViewKey = self.hashValue
-        sharedURLCache[imageViewKey] = urlString
+//        let imageViewKey = self.hashValue
+//        sharedURLCache[imageViewKey] = urlString
         
-        self.kf_setImageWithURL(NSURL(string: urlString)!)
+        if let url = urlString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
+            self.kf_setImageWithURL(NSURL(string: url)!)
+        }
         
 //        ImageDownloader.defaultDownloader.downloadImageWithURL(NSURL(string: urlString)!, progressBlock: nil) { (image, error, imageURL, originalData) in
 //            

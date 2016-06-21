@@ -25,6 +25,8 @@
 		3915EEC31D117D7D00BFA73D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3915EEC21D117D7D00BFA73D /* R.generated.swift */; };
 		39219CBA1D10C73A00FAEABB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39219CB91D10C73A00FAEABB /* AppDelegate.swift */; };
 		39219CC11D10C73A00FAEABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39219CC01D10C73A00FAEABB /* Assets.xcassets */; };
+		392411721D182F1B00AE9255 /* MangaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392411711D182F1B00AE9255 /* MangaViewController.swift */; };
+		392411751D18428A00AE9255 /* MangaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392411741D18428A00AE9255 /* MangaViewModel.swift */; };
 		396960DE1D1370EC00421A43 /* ComicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396960DD1D1370EC00421A43 /* ComicCell.swift */; };
 		396960E01D13715C00421A43 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396960DF1D13715C00421A43 /* BookDetailViewController.swift */; };
 		396960E21D13759600421A43 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396960E11D13759600421A43 /* Networking.swift */; };
@@ -73,6 +75,8 @@
 		39219CB91D10C73A00FAEABB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Ricerolls-iOS/App/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		39219CC01D10C73A00FAEABB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		39219CC51D10C73A00FAEABB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		392411711D182F1B00AE9255 /* MangaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MangaViewController.swift; sourceTree = "<group>"; };
+		392411741D18428A00AE9255 /* MangaViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MangaViewModel.swift; sourceTree = "<group>"; };
 		396960DD1D1370EC00421A43 /* ComicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicCell.swift; sourceTree = "<group>"; };
 		396960DF1D13715C00421A43 /* BookDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		396960E11D13759600421A43 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -221,14 +225,24 @@
 			path = "Ricerolls-iOS";
 			sourceTree = "<group>";
 		};
+		392411731D18427500AE9255 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				392411741D18428A00AE9255 /* MangaViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		396960DC1D1370B700421A43 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				392411731D18427500AE9255 /* ViewModels */,
 				396960DD1D1370EC00421A43 /* ComicCell.swift */,
 				39B3D5371D16E6D0007B8B09 /* ChapterCell.swift */,
 				1597EE881D140132003C78FE /* ComicHeaderView.swift */,
 				1501E7F31D1153FC006F4CD3 /* HomePageViewController.swift */,
 				396960DF1D13715C00421A43 /* BookDetailViewController.swift */,
+				392411711D182F1B00AE9255 /* MangaViewController.swift */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -507,6 +521,7 @@
 				3997B0FB1D159A0C00575F61 /* GenericParams.swift in Sources */,
 				3997B0EE1D158A1C00575F61 /* MessagePackParser+Streaming.m in Sources */,
 				3997B0EF1D158A1C00575F61 /* MessagePackParser.m in Sources */,
+				392411721D182F1B00AE9255 /* MangaViewController.swift in Sources */,
 				3915EEC31D117D7D00BFA73D /* R.generated.swift in Sources */,
 				39B3D53A1D16E752007B8B09 /* BaseCollectionCell.swift in Sources */,
 				1501E7F41D1153FC006F4CD3 /* HomePageViewController.swift in Sources */,
@@ -518,6 +533,7 @@
 				3997B0F31D158A1C00575F61 /* vrefbuffer.c in Sources */,
 				3997B0F21D158A1C00575F61 /* version.c in Sources */,
 				3997B0F51D158A1C00575F61 /* NSArray+MessagePack.m in Sources */,
+				392411751D18428A00AE9255 /* MangaViewModel.swift in Sources */,
 				39C4D0251D10D48E0057135B /* ComicAPI.swift in Sources */,
 				1501E80E1D1160D0006F4CD3 /* BaseViewController.swift in Sources */,
 				3997B0F71D158A1C00575F61 /* NSDictionary+MessagePack.m in Sources */,
