@@ -60,3 +60,33 @@ public extension ObservableType where E == Response {
         }
     }
 }
+
+extension Endpoint {
+    public var cacheUrlRequest: NSURLRequest {
+        let request: NSMutableURLRequest = NSMutableURLRequest(URL: NSURL(string: URL)!, cachePolicy: .ReturnCacheDataElseLoad, timeoutInterval: 15)
+        request.HTTPMethod = method.rawValue
+        request.allHTTPHeaderFields = httpHeaderFields
+        request.addValue("private", forHTTPHeaderField: "Cache-Control")
+        
+        return parameterEncoding.encode(request, parameters: parameters).0
+    }
+}
+
+public extension MoyaProvider {
+    
+    // These functions are default mappings to MoyaProvider's properties: endpoints, requests, manager, etc.
+    
+    public final class func CacheRequestMapping(endpoint: Endpoint<Target>, closure: NSURLRequest -> Void) {
+        return closure(endpoint.cacheUrlRequest)
+    }
+    
+    public final class func CacheAlamofireManager() -> Manager {
+        let configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configuration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
+//        configuration.requestCachePolicy = .ReturnCacheDataElseLoad
+        
+        let manager = Manager(configuration: configuration)
+        manager.startRequestsImmediately = false
+        return manager
+    }
+}

@@ -27,8 +27,7 @@ class MangaViewController: BaseViewController, UIScrollViewDelegate {
     
     lazy var imageCache: ImageCache = {
         let name = "\(self.chapter.value.id)"
-        let dstPath = NSSearchPathForDirectoriesInDomains(.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).first!
-        let cache: ImageCache = ImageCache(name: name, path: (dstPath as NSString).stringByAppendingPathComponent("chapters"))
+        let cache: ImageCache = ImageCache(name: name, path: (CACHE_FOLDER as NSString).stringByAppendingPathComponent("chapters"))
         cache.maxMemoryCost = 30
         return cache
     }()

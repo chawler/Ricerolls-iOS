@@ -12,6 +12,16 @@ import UIKit
 let kDeviceWidth = UIScreen.mainScreen().bounds.size.width
 let kDeviceHeight = UIScreen.mainScreen().bounds.size.height
 
+/**
+ *  folder
+ */
+
+let DOCUMENT_FOLDER = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!
+
+let LIBRARY_FOLDER = NSSearchPathForDirectoriesInDomains(.LibraryDirectory,.UserDomainMask, true).first!
+
+let CACHE_FOLDER = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
+
 
 /**
  *  version
