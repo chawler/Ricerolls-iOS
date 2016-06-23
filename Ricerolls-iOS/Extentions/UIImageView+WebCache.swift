@@ -8,8 +8,10 @@
 
 import Foundation
 import Kingfisher
+import MBProgressHUD
 
 private var lastURLKey: Void?
+private var progressViewKey: Void?
 
 extension UIImageView {
     
@@ -21,7 +23,30 @@ extension UIImageView {
         objc_setAssociatedObject(self, &lastURLKey, URL, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
     
+    public var rr_progressView: MBProgressHUD? {
+        return objc_getAssociatedObject(self, &progressViewKey) as? MBProgressHUD
+    }
+    
+    private func rr_setProgressView(URL: MBProgressHUD) {
+        objc_setAssociatedObject(self, &progressViewKey, URL, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
+    
     func setImageWith(urlString: String, cacheTarget: ImageCache? = nil) {
+        
+        func setupHud() {
+            guard let hud = self.rr_progressView else {
+                let hud = MBProgressHUD.showHUDAddedTo(self, animated: true)
+                hud.mode = .AnnularDeterminate
+                rr_setProgressView(hud)
+                
+                return
+            }
+            hud.progress = 0.0
+            if !hud.isDescendantOfView(self) {
+                self.addSubview(hud)
+            }
+            hud.show(true)
+        }
         
         if let url = urlString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
             
@@ -33,15 +58,36 @@ extension UIImageView {
             
             image = nil
             
-            rr_setWebURL(NSURL(string: url)!)
+            let url = NSURL(string: url)!
             
-            KingfisherManager.sharedManager.retrieveImageWithURL(rr_webURL!, optionsInfo: optionsInfo, progressBlock: nil, completionHandler: { [weak self] (image, error, cacheType, imageURL) in
+            rr_setWebURL(url)
+            
+            if let cacheTarget = cacheTarget {
+                if !cacheTarget.cachedImageExistsforURL(url) {
+                    setupHud()
+                }
+            }
+            
+            KingfisherManager.sharedManager.retrieveImageWithURL(rr_webURL!, optionsInfo: optionsInfo, progressBlock: { [weak self] receivedSize, totalSize in
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    
+                    guard let sSelf = self where url == sSelf.rr_webURL else {
+                        return
+                    }
+                    sSelf.rr_progressView?.progress = Float(receivedSize) / Float(totalSize)
+                    
+                })
+                
+                }, completionHandler: { [weak self] (image, error, cacheType, imageURL) in
                 
                 dispatch_async(dispatch_get_main_queue(), { 
                     
                     guard let sSelf = self where imageURL == sSelf.rr_webURL else {
                         return
                     }
+                    
+                    self?.rr_progressView?.hide(true)
                     
                     if let cacheTarget = cacheTarget {
                         if cacheType == .None {

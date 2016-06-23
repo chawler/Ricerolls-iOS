@@ -26,3 +26,5 @@ pod 'SwiftDate'
 pod 'KMNavigationBarTransition'
 
 pod 'RNCryptor'
+
+pod 'MBProgressHUD'
