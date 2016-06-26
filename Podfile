@@ -29,3 +29,5 @@ pod 'KMNavigationBarTransition'
 pod 'RNCryptor'
 
 pod 'MBProgressHUD'
+
+pod 'MJRefresh'
