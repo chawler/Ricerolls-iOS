@@ -66,3 +66,15 @@ class Chapter: Mappable {
     }
 
 }
+
+extension Chapter: Hashable {
+    
+    var hashValue: Int {
+        return self.id
+    }
+    
+}
+
+func ==(lhs: Chapter, rhs: Chapter) -> Bool {
+    return lhs.id == lhs.id
+}

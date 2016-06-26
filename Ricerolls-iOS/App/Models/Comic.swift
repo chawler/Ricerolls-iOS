@@ -38,3 +38,15 @@ class Comic: Mappable {
     }
 
 }
+
+extension Comic: Hashable {
+    
+    var hashValue: Int {
+        return self.id
+    }
+    
+}
+
+func ==(lhs: Comic, rhs: Comic) -> Bool {
+    return lhs.id == lhs.id
+}

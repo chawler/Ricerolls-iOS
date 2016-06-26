@@ -12,6 +12,7 @@ import RxCocoa
 import NSObject_Rx
 import SnapKit
 import SwiftDate
+import RxDataSources
 
 internal extension Variable {
     
@@ -32,9 +33,35 @@ private let kCollectionViewItemWidth = kCollectionViewItemHeight * 0.55
 private let kCollectionViewInsetLeft = (kDeviceWidth-kCollectionViewItemWidth*3)/4
 private let kCollectionViewInsetRight = kCollectionViewInsetLeft
 
-class HomePageViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+struct ComicSection {
+    var header: String
+    var items: [Item]
+}
+
+extension ComicSection: AnimatableSectionModelType {
     
-    var comics = Variable([Comic]())
+    typealias Item = Comic
+    
+    var identity: String {
+        return header
+    }
+    
+    init(original: ComicSection, items: [Item]) {
+        self = original
+        self.items = items
+    }
+}
+
+extension Comic : IdentifiableType {
+    
+    internal typealias Identity = Int
+    
+    internal var identity : Int {
+        return self.id
+    }
+}
+
+class HomePageViewController: BaseViewController {
     
     lazy var flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -44,26 +71,42 @@ class HomePageViewController: BaseViewController, UICollectionViewDataSource, UI
     
     lazy var collectionView: UICollectionView = {
         let v = UICollectionView(frame: CGRectZero, collectionViewLayout: self.flowLayout)
-        v.dataSource = self
-        v.delegate = self
         return v
     }()
     
     override func config() {
         super.config()
+        
         collectionView.backgroundColor = HexRGB(0xf5f4f0)
         collectionView.registerClass(ComicCell.self, forCellWithReuseIdentifier: kComicCellReuseIdentifier)
         collectionView.contentInset = UIEdgeInsetsMake(0, kCollectionViewInsetLeft, 0, kCollectionViewInsetRight)
+        
+        collectionView.rx_modelSelected(Comic)
+            .subscribeNext { comic in
+                let vc = BookDetailViewController(id: comic.id)
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            .addDisposableTo(rx_disposeBag)
+        
         comicProvider.request(.List)
             .filterSuccessfulStatusCodes()
             .mapArray(Comic)
-            .bindTo(comics)
-            .addDisposableTo(rx_disposeBag)
-        
-        comics.asDriver()
-            .driveNext { _ in
-                self.collectionView.reloadData()
+//            .map({ comics -> [ComicSection] in
+//                var secions = [ComicSection]()
+//                secions.append(ComicSection(header: "First Section", items: comics))
+//                return secions
+//            })
+            .bindTo(collectionView.rx_itemsWithCellIdentifier(kComicCellReuseIdentifier, cellType: ComicCell.self)) { (_, comic, cell) in
+                cell.imageView.setImageWith(comic.cover_url)
+                runAsyncOnBackground({
+                    let dateString = comic.updated_at?.toString(DateFormat.Custom("yyyy-MM-dd"))
+                    runAsyncOnMain({
+                        cell.timeLabel.text = dateString
+                    })
+                })
             }
+//            .bindTo(collectionView.rx_itemsWithDataSource(dataSource))
             .addDisposableTo(rx_disposeBag)
     }
     
@@ -76,35 +119,6 @@ class HomePageViewController: BaseViewController, UICollectionViewDataSource, UI
         super.autolayout()
         collectionView.snp_makeConstraints { (make) in
             make.edges.equalTo(self.view)
-        }
-    }
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return comics.value.count
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kComicCellReuseIdentifier, forIndexPath: indexPath) as! ComicCell
-        if indexPath.row < comics.listCount {
-            let comic = comics.value[indexPath.row]
-            cell.titleLabel.text = comic.title
-            cell.imageView.setImageWith(comic.cover_url)
-            runAsyncOnBackground({
-                let dateString = comic.updated_at?.toString(DateFormat.Custom("yyyy-MM-dd"))
-                runAsyncOnMain({
-                    cell.timeLabel.text = dateString
-                })
-            })
-        }
-        return cell
-    }
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row < comics.listCount {
-            let comic = comics.value[indexPath.row]
-            let vc = BookDetailViewController(id: comic.id)
-            vc.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 

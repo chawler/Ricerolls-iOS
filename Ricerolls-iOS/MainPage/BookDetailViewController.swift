@@ -143,7 +143,11 @@ class BookDetailViewController: BaseViewController, UICollectionViewDelegate, UI
         }
     }
 
-    
+    deinit {
+        
+        print("deinit: \(self)")
+        
+    }
 
     /*
     // MARK: - Navigation

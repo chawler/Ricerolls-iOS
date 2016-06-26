@@ -22,6 +22,9 @@ PODS:
   - RNCryptor (4.0.0)
   - RxCocoa (2.5.0):
     - RxSwift (~> 2.5)
+  - RxDataSources (0.8.1):
+    - RxCocoa (~> 2.2)
+    - RxSwift (~> 2.2)
   - RxSwift (2.5.0)
   - SnapKit (0.21.0)
   - SwiftDate (3.0.8)
@@ -38,6 +41,7 @@ DEPENDENCIES:
   - R.swift
   - RNCryptor
   - RxCocoa
+  - RxDataSources (~> 0.7)
   - RxSwift
   - SnapKit
   - SwiftDate
@@ -56,6 +60,7 @@ SPEC CHECKSUMS:
   Result: 9e75e1111c774c6ac594e14907b15057053a7959
   RNCryptor: 59d6483908115af5c12b884db23392024e52a5fe
   RxCocoa: e1b1562e57a554d0fb2aabf9d71b637f177257c7
+  RxDataSources: 4a87345847d66ef84ecc10bdfa189190f3cd6b12
   RxSwift: 402b41a50e922a0368fc14cb3bc9f4427920e8ae
   SnapKit: 2756fe24b706367af224c9c508d2f9166d03354c
   SwiftDate: 971f8b9394f664f2226b9c3ab64e801a7291c612

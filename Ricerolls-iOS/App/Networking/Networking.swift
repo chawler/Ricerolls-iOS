@@ -30,14 +30,14 @@ class MyMoyaProvider<Target where Target : TargetType> : RxMoyaProvider<Target> 
     }
     
     override func request(target: Target, completion: Completion) -> Cancellable {
-        if let cacheResponse = NSURLCache.sharedURLCache().cachedResponseForRequest(self.endpoint(target).urlRequest) {
-            if let urlResponse = cacheResponse.response as? NSHTTPURLResponse {
-                let result = convertResponseToResult(urlResponse, data: cacheResponse.data, error: nil)
-                completion(result: result)
-                return CancellableWrapper()
-            }
-            
-        }
+//        if let cacheResponse = NSURLCache.sharedURLCache().cachedResponseForRequest(self.endpoint(target).urlRequest) {
+//            if let urlResponse = cacheResponse.response as? NSHTTPURLResponse {
+//                let result = convertResponseToResult(urlResponse, data: cacheResponse.data, error: nil)
+//                completion(result: result)
+//                return CancellableWrapper()
+//            }
+//            
+//        }
         return super.request(target, completion: completion)
     }
     

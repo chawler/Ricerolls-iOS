@@ -9,6 +9,7 @@ pod 'Moya/RxSwift'
 
 pod 'RxSwift'
 pod 'RxCocoa'
+pod 'RxDataSources', '~> 0.7'
 
 pod 'NSObject+Rx'
 pod 'ObjectMapper'
