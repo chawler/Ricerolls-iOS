@@ -55,4 +55,9 @@ extension ComicAPI: TargetType {
         }
     }
     
+    func page(page: Int) -> ComicAPI {
+        
+        return self
+    }
+    
 }

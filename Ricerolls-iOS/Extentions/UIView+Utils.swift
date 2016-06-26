@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 import ObjectiveC
 
-var JhwActionHandlerTargetBlockKey: UInt8 = 0
-var JhwActionHandlerTapGestureKey: UInt8 = 1
+private var JhwActionHandlerTargetBlockKey: UInt8 = 0
+private var JhwActionHandlerTapGestureKey: UInt8 = 1
 
 typealias JhwViewUIButtonClosure = @convention(block) (UIButton) -> ()
 typealias JhwViewGestureClosure = @convention(block) (UIGestureRecognizer) -> ()

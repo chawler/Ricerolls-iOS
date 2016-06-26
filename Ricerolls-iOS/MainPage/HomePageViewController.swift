@@ -63,9 +63,13 @@ extension Comic : IdentifiableType {
 
 class HomePageViewController: BaseViewController {
     
+    let viewModel = ComicViewModel(token: .List)
+    
     lazy var flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSizeMake(kCollectionViewItemWidth, kCollectionViewItemHeight)
+        layout.sectionInset.left = kCollectionViewInsetLeft
+        layout.sectionInset.right = kCollectionViewInsetRight
         return layout
     }()
     
@@ -74,12 +78,23 @@ class HomePageViewController: BaseViewController {
         return v
     }()
     
+    override func loadView() {
+        rx_sentMessage(#selector(UIViewController.viewDidLoad))
+            .map { _ in () }
+            .bindTo(viewModel.refreshTrigger)
+            .addDisposableTo(rx_disposeBag)
+        super.loadView()
+    }
+    
     override func config() {
         super.config()
         
         collectionView.backgroundColor = HexRGB(0xf5f4f0)
         collectionView.registerClass(ComicCell.self, forCellWithReuseIdentifier: kComicCellReuseIdentifier)
-        collectionView.contentInset = UIEdgeInsetsMake(0, kCollectionViewInsetLeft, 0, kCollectionViewInsetRight)
+        
+        collectionView.rx_refreshHeader
+            .bindTo(viewModel.refreshTrigger)
+            .addDisposableTo(rx_disposeBag)
         
         collectionView.rx_modelSelected(Comic)
             .subscribeNext { comic in
@@ -89,15 +104,14 @@ class HomePageViewController: BaseViewController {
             }
             .addDisposableTo(rx_disposeBag)
         
-        comicProvider.request(.List)
-            .filterSuccessfulStatusCodes()
-            .mapArray(Comic)
-//            .map({ comics -> [ComicSection] in
-//                var secions = [ComicSection]()
-//                secions.append(ComicSection(header: "First Section", items: comics))
-//                return secions
-//            })
-            .bindTo(collectionView.rx_itemsWithCellIdentifier(kComicCellReuseIdentifier, cellType: ComicCell.self)) { (_, comic, cell) in
+        viewModel.elements.asObservable()
+            .map { _ in () }
+            .bindTo(collectionView.rx_endRefreshing)
+            .addDisposableTo(rx_disposeBag)
+        
+        viewModel.elements.asDriver()
+            .drive(collectionView.rx_itemsWithCellIdentifier(kComicCellReuseIdentifier, cellType: ComicCell.self)){ (_, comic, cell) in
+                cell.titleLabel.text = comic.title
                 cell.imageView.setImageWith(comic.cover_url)
                 runAsyncOnBackground({
                     let dateString = comic.updated_at?.toString(DateFormat.Custom("yyyy-MM-dd"))
@@ -106,7 +120,6 @@ class HomePageViewController: BaseViewController {
                     })
                 })
             }
-//            .bindTo(collectionView.rx_itemsWithDataSource(dataSource))
             .addDisposableTo(rx_disposeBag)
     }
     
