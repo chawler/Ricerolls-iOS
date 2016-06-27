@@ -26,6 +26,14 @@ class BaseViewController: UIViewController {
     func autolayout() {
         
     }
+    
+    func pushControllerHideBottomBar(controller: UIViewController, title: String = "") {
+        if title.length > 0 {
+            controller.title = title
+        }
+        controller.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

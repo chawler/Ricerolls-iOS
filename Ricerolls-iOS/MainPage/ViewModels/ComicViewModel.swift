@@ -67,7 +67,7 @@ class ComicViewModel: NSObject {
         
         Observable
             .of(
-                request.map { _ in false },
+                request.map { _ in true },
                 response.map { _ in false },
                 error.map { _ in false }
             )

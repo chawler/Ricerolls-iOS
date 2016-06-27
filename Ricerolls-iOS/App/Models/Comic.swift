@@ -19,7 +19,7 @@ class Comic: Mappable {
     var intro = ""
     var tags: [String] = []
     var updated_info = ""
-    var chapters: [Chapter]?
+    var chapters: [Chapter] = []
     
     required convenience init?(_ map: Map) {
         self.init()

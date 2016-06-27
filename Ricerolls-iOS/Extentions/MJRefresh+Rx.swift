@@ -9,8 +9,10 @@
 import Foundation
 import MJRefresh
 import RxSwift
+import MBProgressHUD
 
 private var refreshingBlockKey: Void?
+private var hudKey: Void?
 
 typealias RxMJRefreshClosure = @convention(block) () -> ()
 
@@ -26,6 +28,15 @@ extension UIScrollView {
         set (closure) {
             let dealObject: AnyObject = unsafeBitCast(closure, AnyObject.self)
             objc_setAssociatedObject(self, &refreshingBlockKey, dealObject, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
+    }
+    
+    private var hud: MBProgressHUD? {
+        get {
+            return objc_getAssociatedObject(self, &hudKey) as? MBProgressHUD
+        }
+        set (newHud) {
+            objc_setAssociatedObject(self, &hudKey, newHud, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
@@ -61,12 +72,20 @@ extension UIScrollView {
                 if let header = sSelf.mj_header {
                     if header.isRefreshing() {
                         header.endRefreshing()
+                        break
                     }
                 }
                 if let footer = sSelf.mj_footer {
                     if footer.isRefreshing() {
                         footer.endRefreshing()
+                        break
                     }
+                }
+                if let hud = sSelf.hud {
+                    hud.hide(true)
+                    sSelf.hud = nil
+                } else {
+                    sSelf.hud = MBProgressHUD.showHUDAddedTo(sSelf, animated: true)
                 }
                 break
             case .Error(let error):

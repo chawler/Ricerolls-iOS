@@ -50,6 +50,9 @@
 		3997B0F71D158A1C00575F61 /* NSDictionary+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0EB1D158A1C00575F61 /* NSDictionary+MessagePack.m */; };
 		3997B0F91D158BBA00575F61 /* Moya-Response+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0F81D158BBA00575F61 /* Moya-Response+Extra.swift */; };
 		3997B0FB1D159A0C00575F61 /* GenericParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997B0FA1D159A0C00575F61 /* GenericParams.swift */; };
+		39B0199B1D217FB700495900 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B0199A1D217FB700495900 /* BaseViewModel.swift */; };
+		39B0199D1D21852D00495900 /* ComicDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B0199C1D21852D00495900 /* ComicDetailViewModel.swift */; };
+		39B0199F1D2185D200495900 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B0199E1D2185D200495900 /* String.swift */; };
 		39B3D5361D16DD9C007B8B09 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B3D5351D16DD9C007B8B09 /* Chapter.swift */; };
 		39B3D53A1D16E752007B8B09 /* BaseCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B3D5391D16E752007B8B09 /* BaseCollectionCell.swift */; };
 		39B700811D1E0EDB00045E15 /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7007F1D1E0EDB00045E15 /* ChapterCell.swift */; };
@@ -130,6 +133,9 @@
 		3997B0EC1D158A1C00575F61 /* TestMsgPack-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestMsgPack-Bridging-Header.h"; sourceTree = "<group>"; };
 		3997B0F81D158BBA00575F61 /* Moya-Response+Extra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moya-Response+Extra.swift"; sourceTree = "<group>"; };
 		3997B0FA1D159A0C00575F61 /* GenericParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericParams.swift; sourceTree = "<group>"; };
+		39B0199A1D217FB700495900 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		39B0199C1D21852D00495900 /* ComicDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicDetailViewModel.swift; sourceTree = "<group>"; };
+		39B0199E1D2185D200495900 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		39B3D5351D16DD9C007B8B09 /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		39B3D5391D16E752007B8B09 /* BaseCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionCell.swift; sourceTree = "<group>"; };
 		39B7007F1D1E0EDB00045E15 /* ChapterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterCell.swift; sourceTree = "<group>"; };
@@ -160,6 +166,7 @@
 		1501E7F51D115420006F4CD3 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
+				39B0199E1D2185D200495900 /* String.swift */,
 				1597EE841D13DB11003C78FE /* UIView+Utils.swift */,
 				1597EE861D13F4FD003C78FE /* UIImageView+WebCache.swift */,
 				396EE80E1D12218E00057468 /* Image+ImageWithColor.swift */,
@@ -246,6 +253,8 @@
 			children = (
 				392411741D18428A00AE9255 /* MangaViewModel.swift */,
 				394198661D1FC3A900AF7E72 /* ComicViewModel.swift */,
+				39B0199C1D21852D00495900 /* ComicDetailViewModel.swift */,
+				39B0199A1D217FB700495900 /* BaseViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -534,6 +543,7 @@
 				1597EE811D13DA1E003C78FE /* ADBlurImageView.swift in Sources */,
 				1597EE831D13DAB6003C78FE /* CustomView.swift in Sources */,
 				3997B0F91D158BBA00575F61 /* Moya-Response+Extra.swift in Sources */,
+				39B0199D1D21852D00495900 /* ComicDetailViewModel.swift in Sources */,
 				3997B0F01D158A1C00575F61 /* objectc.c in Sources */,
 				3997B0F11D158A1C00575F61 /* unpack.c in Sources */,
 				396960E41D13791600421A43 /* NetworkLogger.swift in Sources */,
@@ -572,9 +582,11 @@
 				392411751D18428A00AE9255 /* MangaViewModel.swift in Sources */,
 				39C4D0251D10D48E0057135B /* ComicAPI.swift in Sources */,
 				1501E80E1D1160D0006F4CD3 /* BaseViewController.swift in Sources */,
+				39B0199B1D217FB700495900 /* BaseViewModel.swift in Sources */,
 				3997B0F71D158A1C00575F61 /* NSDictionary+MessagePack.m in Sources */,
 				1597EE871D13F4FD003C78FE /* UIImageView+WebCache.swift in Sources */,
 				396EE80F1D12218E00057468 /* Image+ImageWithColor.swift in Sources */,
+				39B0199F1D2185D200495900 /* String.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

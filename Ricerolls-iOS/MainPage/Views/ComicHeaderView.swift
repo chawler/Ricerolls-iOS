@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 private let kCoverRightInset = 20
 
@@ -96,14 +97,38 @@ class ComicHeaderView: CustomView {
         }
     }
     
-    func layoutWithData(data: AnyObject) {
-        if let comic = data as? Comic {
-            self.background.setImageWith(comic.cover_url)
-            self.coverView.setImageWith(comic.cover_url)
-            self.setupTags(comic.tags)
-            self.titleLabel.text = comic.title
-            self.authorLabel.text = comic.author
+    var rx_data: AnyObserver<Comic> {
+        
+        return AnyObserver { event in
+            
+            switch event {
+            case .Next(let comic):
+                self.layoutWithData(comic)
+                break
+            case .Error(let error):
+                print(error)
+                break
+            case .Completed:
+                break
+            }
+            
         }
+        
+    }
+    
+    func layoutWithData(data: AnyObject) {
+        guard let comic = data as? Comic else {
+            return
+        }
+        if comic.id <= 0 {
+            return
+        }
+        
+        self.background.setImageWith(comic.cover_url)
+        self.coverView.setImageWith(comic.cover_url)
+        self.setupTags(comic.tags)
+        self.titleLabel.text = comic.title
+        self.authorLabel.text = comic.author
     }
 
     /*

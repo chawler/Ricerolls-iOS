@@ -14,19 +14,6 @@ import SnapKit
 import SwiftDate
 import RxDataSources
 
-internal extension Variable {
-    
-    var listCount: Int {
-        get {
-            if let list = self.value as? [Comic] {
-                return list.count
-            }
-            return 0
-        }
-    }
-    
-}
-
 private let kComicCellReuseIdentifier = "kComicCellReuseIdentifier"
 private let kCollectionViewItemHeight = kDeviceWidth/2
 private let kCollectionViewItemWidth = kCollectionViewItemHeight * 0.55
@@ -61,7 +48,7 @@ extension Comic : IdentifiableType {
     }
 }
 
-class HomePageViewController: BaseViewController {
+class HomePageViewController: BaseViewController, UICollectionViewDelegateFlowLayout {
     
     let viewModel = ComicViewModel(token: .List)
     
@@ -91,16 +78,16 @@ class HomePageViewController: BaseViewController {
         
         collectionView.backgroundColor = HexRGB(0xf5f4f0)
         collectionView.registerClass(ComicCell.self, forCellWithReuseIdentifier: kComicCellReuseIdentifier)
-        
+        collectionView.rx_setDelegate(self)
         collectionView.rx_refreshHeader
             .bindTo(viewModel.refreshTrigger)
             .addDisposableTo(rx_disposeBag)
         
         collectionView.rx_modelSelected(Comic)
             .subscribeNext { comic in
-                let vc = BookDetailViewController(id: comic.id)
-                vc.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(vc, animated: true)
+                let vc = BookDetailViewController()
+                vc.viewModel = ComicDetailViewModel(comic_id: comic.id)
+                self.pushControllerHideBottomBar(vc)
             }
             .addDisposableTo(rx_disposeBag)
         
@@ -139,7 +126,6 @@ class HomePageViewController: BaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

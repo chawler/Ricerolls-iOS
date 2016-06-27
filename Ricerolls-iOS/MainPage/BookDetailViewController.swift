@@ -15,9 +15,12 @@ private let kCollectionViewItemHeight: CGFloat = 44
 private let kComicHeaderReuseIdentifier = "kComicHeaderReuseIdentifier"
 private let kChapterCellReuseIdentifier = "kChapterCellReuseIdentifier"
 
-class BookDetailViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class BookDetailViewController: BaseViewController {
     
     var id: Int = 0
+    
+    var viewModel: ComicDetailViewModel?
+    
     var topConstraint: Constraint? = nil
     var heightConstraint: Constraint? = nil
     
@@ -33,8 +36,6 @@ class BookDetailViewController: BaseViewController, UICollectionViewDelegate, UI
     
     lazy var collectionView: UICollectionView = {
         let v = UICollectionView(frame: CGRectZero, collectionViewLayout: self.flowLayout)
-        v.dataSource = self
-        v.delegate = self
         return v
     }()
     
@@ -58,21 +59,35 @@ class BookDetailViewController: BaseViewController, UICollectionViewDelegate, UI
         collectionView.backgroundColor = HexRGB(0xf5f4f0)
         collectionView.registerClass(ChapterCell.self, forCellWithReuseIdentifier: kChapterCellReuseIdentifier)
         
-        comicProvider.request(.Detail(id: self.id))
-            .filterSuccessfulStatusCodes()
-            .mapObject(Comic)
-            .bindTo(MangaViewModel.comic)
-            .addDisposableTo(rx_disposeBag)
+        if let viewModel = self.viewModel {
+            
+            viewModel.comic
+                .asDriver()
+                .drive(headerView.rx_data)
+                .addDisposableTo(rx_disposeBag)
+            
+            viewModel.chapters
+                .asDriver()
+                .drive(collectionView.rx_itemsWithCellIdentifier(kChapterCellReuseIdentifier, cellType: ChapterCell.self)) {(row, chapter, cell) in
+                    
+                    if chapter.index == 0 {
+                        cell.titleLabel.text = chapter.name
+                    } else {
+                        cell.titleLabel.text = "\(chapter.index)"
+                    }
+                    
+                }.addDisposableTo(rx_disposeBag)
+            
+        }
         
-        MangaViewModel.comic.asDriver()
-            .filter({ comic -> Bool in
-                return comic.id != 0
-            })
-            .driveNext { [weak self] comic in
-                self?.headerView.layoutWithData(comic)
-                self?.collectionView.reloadData()
+        collectionView.rx_modelSelected(Chapter)
+            .subscribeNext { [weak self] chapter in
+                
+                self?.pushControllerHideBottomBar(MangaViewController())
+                
             }
             .addDisposableTo(rx_disposeBag)
+        
     }
     
     override func setupViews() {
@@ -97,6 +112,14 @@ class BookDetailViewController: BaseViewController, UICollectionViewDelegate, UI
             self.heightConstraint = make.height.equalTo(collectionView).multipliedBy(0.35).constraint
         }
     }
+    
+    override func loadView() {
+        super.loadView()
+        rx_sentMessage(#selector(UIViewController.viewDidLoad))
+            .map { _ in () }
+            .bindTo(viewModel!.refreshTrigger)
+            .addDisposableTo(rx_disposeBag)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,28 +130,6 @@ class BookDetailViewController: BaseViewController, UICollectionViewDelegate, UI
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MangaViewModel.comic.value.chapters?.count ?? 0
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kChapterCellReuseIdentifier, forIndexPath: indexPath) as! ChapterCell
-        let chapter = MangaViewModel.chapters[indexPath.row]
-        if chapter.index == 0 {
-            cell.titleLabel.text = chapter.name
-        } else {
-            cell.titleLabel.text = "\(chapter.index)"
-        }
-        return cell
-    }
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        MangaViewModel.selectedIndex = indexPath.row
-        let vc = MangaViewController()
-        vc.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
