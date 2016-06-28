@@ -17,8 +17,6 @@ private let kChapterCellReuseIdentifier = "kChapterCellReuseIdentifier"
 
 class BookDetailViewController: BaseViewController {
     
-    var id: Int = 0
-    
     var viewModel: ComicDetailViewModel?
     
     var topConstraint: Constraint? = nil
@@ -38,19 +36,6 @@ class BookDetailViewController: BaseViewController {
         let v = UICollectionView(frame: CGRectZero, collectionViewLayout: self.flowLayout)
         return v
     }()
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    convenience init(id: Int) {
-        self.init(nibName: nil, bundle: nil)
-        self.id = id
-    }
     
     override func config() {
         super.config()
@@ -87,6 +72,21 @@ class BookDetailViewController: BaseViewController {
                 
             }
             .addDisposableTo(rx_disposeBag)
+        
+        collectionView.rx_contentOffset
+            .subscribeNext { [weak self] contentOffset in
+                
+                let offsetY = contentOffset.y
+                if offsetY <= 0 {
+                    if let constraint = self?.topConstraint {
+                        constraint.updateOffset(offsetY)
+                    }
+                    if let constraint = self?.heightConstraint {
+                        constraint.updateOffset(-offsetY)
+                    }
+                }
+                
+            }.addDisposableTo(rx_disposeBag)
         
     }
     
@@ -130,18 +130,6 @@ class BookDetailViewController: BaseViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        if offsetY <= 0 {
-            if let constraint = self.topConstraint {
-                constraint.updateOffset(offsetY)
-            }
-            if let constraint = self.heightConstraint {
-                constraint.updateOffset(-offsetY)
-            }
-        }
     }
 
     deinit {
