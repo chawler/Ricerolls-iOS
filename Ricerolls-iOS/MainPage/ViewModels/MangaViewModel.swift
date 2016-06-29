@@ -9,40 +9,61 @@
 import UIKit
 import RxSwift
 import Moya
+import ObjectMapper
+import Kingfisher
 
 class MangaViewModel: BaseViewModel<ComicAPI> {
     
-    static var comic = Variable(Comic())
-    static var selectedIndex = 0
+    let secions = Variable<[ChapterSection]>([])
     
-    let element = Variable<Comic>(Comic())
+    var comic: Comic!
     
-    convenience init(comic_id: Int) {
-        self.init(token: .Detail(id: comic_id))
+    var currentChapter: Chapter!
+    
+    lazy var imageCache: ImageCache = {
+        let name = "\(self.currentChapter.id)"
+        let cache: ImageCache = ImageCache(name: name, path: (CACHE_FOLDER as NSString).stringByAppendingPathComponent("chapters"))
+        cache.maxMemoryCost = 30
+        return cache
+    }()
+    
+    convenience init(comic: Comic) {
+        self.init()
+        self.comic = comic
     }
     
-    override func responseBindTo(response: Observable<Response>) {
+    func loadCurrentChapter() {
         
-        response
-            .mapObject(Comic)
-            .bindTo(element)
+        self.loadChapter(currentChapter)
+        
+    }
+    
+    func loadChapter(chapter: Chapter) {
+        
+        let resposne = requestTarget(.Chapter(comicId: comic.id, id: chapter.id))
+        
+        let element = resposne
+            .mapMessagePackJSON()
+            .map({ json -> ChapterSection in
+                let map = Map(mappingType: .FromJSON, JSONDictionary: json as! [String : AnyObject])
+                chapter.mapping(map)
+                mangaManager.generateItems(chapter)
+                return ChapterSection(header: chapter.name, items: mangaManager.dataSource[chapter]!)
+            })
+        
+        Observable
+            .combineLatest(element, secions.asObservable()) { secion, secions in
+                return secions + [secion]
+            }
+            .sample(resposne)
+            .bindTo(secions)
             .addDisposableTo(rx_disposeBag)
+    }
+    
+    deinit {
         
-    }
-    
-    static var comicId: Int {
-        return comic.value.id
-    }
-    
-    static var chapters: [Chapter] {
-        return comic.value.chapters
-    }
-    
-    static var selectedChapter: Chapter? {
-        if selectedIndex < chapters.count {
-            return chapters[selectedIndex]
-        }
-        return nil
+        self.imageCache.clearMemoryCache()
+        
     }
 
 }

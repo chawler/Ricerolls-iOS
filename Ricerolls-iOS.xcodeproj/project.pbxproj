@@ -53,6 +53,7 @@
 		39B0199B1D217FB700495900 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B0199A1D217FB700495900 /* BaseViewModel.swift */; };
 		39B0199D1D21852D00495900 /* ComicDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B0199C1D21852D00495900 /* ComicDetailViewModel.swift */; };
 		39B0199F1D2185D200495900 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B0199E1D2185D200495900 /* String.swift */; };
+		39B019A11D233C4C00495900 /* MangaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B019A01D233C4C00495900 /* MangaCollectionViewCell.swift */; };
 		39B3D5361D16DD9C007B8B09 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B3D5351D16DD9C007B8B09 /* Chapter.swift */; };
 		39B3D53A1D16E752007B8B09 /* BaseCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B3D5391D16E752007B8B09 /* BaseCollectionCell.swift */; };
 		39B700811D1E0EDB00045E15 /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7007F1D1E0EDB00045E15 /* ChapterCell.swift */; };
@@ -136,6 +137,7 @@
 		39B0199A1D217FB700495900 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		39B0199C1D21852D00495900 /* ComicDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicDetailViewModel.swift; sourceTree = "<group>"; };
 		39B0199E1D2185D200495900 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		39B019A01D233C4C00495900 /* MangaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MangaCollectionViewCell.swift; sourceTree = "<group>"; };
 		39B3D5351D16DD9C007B8B09 /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		39B3D5391D16E752007B8B09 /* BaseCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionCell.swift; sourceTree = "<group>"; };
 		39B7007F1D1E0EDB00045E15 /* ChapterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterCell.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 			children = (
 				39B700801D1E0EDB00045E15 /* ComicCell.swift */,
 				39B7007F1D1E0EDB00045E15 /* ChapterCell.swift */,
+				39B019A01D233C4C00495900 /* MangaCollectionViewCell.swift */,
 				39B700831D1E0F1000045E15 /* ComicHeaderView.swift */,
 			);
 			path = Views;
@@ -543,6 +546,7 @@
 				1597EE811D13DA1E003C78FE /* ADBlurImageView.swift in Sources */,
 				1597EE831D13DAB6003C78FE /* CustomView.swift in Sources */,
 				3997B0F91D158BBA00575F61 /* Moya-Response+Extra.swift in Sources */,
+				39B019A11D233C4C00495900 /* MangaCollectionViewCell.swift in Sources */,
 				39B0199D1D21852D00495900 /* ComicDetailViewModel.swift in Sources */,
 				3997B0F01D158A1C00575F61 /* objectc.c in Sources */,
 				3997B0F11D158A1C00575F61 /* unpack.c in Sources */,

@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectMapper
+import RxDataSources
 
 class Comic: Mappable {
     
@@ -49,4 +50,13 @@ extension Comic: Hashable {
 
 func ==(lhs: Comic, rhs: Comic) -> Bool {
     return lhs.id == lhs.id
+}
+
+extension Comic : IdentifiableType {
+    
+    internal typealias Identity = Int
+    
+    internal var identity : Int {
+        return self.id
+    }
 }

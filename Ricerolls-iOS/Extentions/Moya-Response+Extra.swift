@@ -42,6 +42,12 @@ public extension Response {
 /// Extension for processing Responses into Mappable objects through ObjectMapper
 public extension ObservableType where E == Response {
     
+    public func mapMessagePackJSON() -> Observable<AnyObject> {
+        return flatMap { response -> Observable<AnyObject> in
+            return Observable.just(try response.mapMessagePackJSON())
+        }
+    }
+    
     /// Maps data received from the signal into an object
     /// which implements the Mappable protocol and returns the result back
     /// If the conversion fails, the signal errors.

@@ -22,6 +22,14 @@ class BaseViewModel<Target where Target : TargetType>: NSObject {
     
     convenience init(token: Target) {
         self.init()
+        
+        let response = requestTarget(token)
+        
+        responseBindTo(response)
+    }
+    
+    func requestTarget(token: Target) -> Observable<Response> {
+        
         let request = loading.asObservable()
             .sample(refreshTrigger)
             .flatMap { flag -> Observable<Target> in
@@ -42,7 +50,7 @@ class BaseViewModel<Target where Target : TargetType>: NSObject {
                 .catchError({ _ in
                     Observable.empty()
                 })
-        }.shareReplay(1)
+            }.shareReplay(1)
         
         Observable
             .of(
@@ -54,7 +62,7 @@ class BaseViewModel<Target where Target : TargetType>: NSObject {
             .bindTo(loading)
             .addDisposableTo(rx_disposeBag)
         
-        responseBindTo(response)
+        return response
     }
     
     func responseBindTo(response: Observable<Response>) {

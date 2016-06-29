@@ -68,7 +68,11 @@ class BookDetailViewController: BaseViewController {
         collectionView.rx_modelSelected(Chapter)
             .subscribeNext { [weak self] chapter in
                 
-                self?.pushControllerHideBottomBar(MangaViewController())
+                let viewModel = MangaViewModel(comic: (self?.viewModel?.comic.value)!)
+                viewModel.currentChapter = chapter
+                let vc = MangaViewController()
+                vc.viewModel = viewModel
+                self?.pushControllerHideBottomBar(vc)
                 
             }
             .addDisposableTo(rx_disposeBag)

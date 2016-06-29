@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import RxSwift
+import RxDataSources
 
-class MangaItem {
+class MangaItem: NSObject {
     
     private(set) var index = 0
     private(set) var url = ""
@@ -21,13 +21,15 @@ class MangaItem {
         self.url = url
         self.index = index
     }
-    
-//    func request() -> Observable<UIImage> {
-//        return Observable.create { observer -> Disposable in
-//            
-//            
-//            
-//        }
-//    }
 
+}
+
+
+extension MangaItem : IdentifiableType {
+    
+    internal typealias Identity = Int
+    
+    internal var identity : Int {
+        return self.index
+    }
 }

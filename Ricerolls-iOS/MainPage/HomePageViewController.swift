@@ -12,41 +12,12 @@ import RxCocoa
 import NSObject_Rx
 import SnapKit
 import SwiftDate
-import RxDataSources
 
 private let kComicCellReuseIdentifier = "kComicCellReuseIdentifier"
 private let kCollectionViewItemHeight = kDeviceWidth/2
 private let kCollectionViewItemWidth = kCollectionViewItemHeight * 0.55
 private let kCollectionViewInsetLeft = (kDeviceWidth-kCollectionViewItemWidth*3)/4
 private let kCollectionViewInsetRight = kCollectionViewInsetLeft
-
-struct ComicSection {
-    var header: String
-    var items: [Item]
-}
-
-extension ComicSection: AnimatableSectionModelType {
-    
-    typealias Item = Comic
-    
-    var identity: String {
-        return header
-    }
-    
-    init(original: ComicSection, items: [Item]) {
-        self = original
-        self.items = items
-    }
-}
-
-extension Comic : IdentifiableType {
-    
-    internal typealias Identity = Int
-    
-    internal var identity : Int {
-        return self.id
-    }
-}
 
 class HomePageViewController: BaseViewController, UICollectionViewDelegateFlowLayout {
     

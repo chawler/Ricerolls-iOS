@@ -9,67 +9,81 @@
 import UIKit
 import RxSwift
 import Kingfisher
+import RxDataSources
+
+struct ChapterSection {
+    var header: String
+    var items: [Item]
+}
+
+extension ChapterSection: AnimatableSectionModelType {
+    
+    typealias Item = MangaItem
+    
+    var identity: String {
+        return header
+    }
+    
+    init(original: ChapterSection, items: [Item]) {
+        self = original
+        self.items = items
+    }
+}
 
 class MangaViewController: BaseViewController, UIScrollViewDelegate {
     
     var mangaBrowser: MangaBrowser?
+    var viewModel: MangaViewModel!
+    
+    lazy var flowLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        layout.sectionInset = UIEdgeInsetsZero
+        layout.scrollDirection = .Horizontal
+        return layout
+    }()
+    
+    lazy var collectionView: UICollectionView = {
+        let collectionView: UICollectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: self.flowLayout)
+        collectionView.pagingEnabled = true
+        return collectionView
+    }()
+    
+    override func config() {
+        super.config()
+        
+        collectionView.registerClass(MangaCollectionViewCell.self, forCellWithReuseIdentifier: kMangaCollectionViewCell)
+        
+        let dataSource = RxCollectionViewSectionedAnimatedDataSource<ChapterSection>()
+        dataSource.cellFactory = { (ds, cv, ip, item: MangaItem) in
+            let cell = cv.dequeueReusableCellWithReuseIdentifier(kMangaCollectionViewCell, forIndexPath: ip) as! MangaCollectionViewCell
+            cell.imageView.setImageWith(item.url, cacheTarget: self.viewModel.imageCache)
+            return cell
+        }
+        
+        viewModel.secions
+            .asDriver()
+            .drive(collectionView.rx_itemsWithDataSource(dataSource))
+            .addDisposableTo(rx_disposeBag)
+    }
     
     override func setupViews() {
         super.setupViews()
-//        self.view.addSubview(scrollView)
+        self.view.addSubview(collectionView)
+    }
+    
+    override func autolayout() {
+        super.autolayout()
+        collectionView.snp_makeConstraints { (make) in
+            make.edges.equalTo(self.view)
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let variable = Variable(Chapter())
-        UITextField().rx_text
-        comicProvider.request(.Chapter(comicId: MangaViewModel.comicId,
-                                            id: MangaViewModel.selectedChapter!.id))
-            .filterSuccessfulStatusCodes()
-            .mapObject(Chapter)
-//            .asObservable()
-//            .bindTo(self.mangaBrowser!.collectionView.rx_itemsWithCellIdentifier(kMangaCollectionViewCell, cellType: MangaCollectionViewCell.self))  { (row, element, cell) in
-//                cell.textLabel?.text = "\(element) @ row \(row)"
-//            }
-            .bindTo(variable)
-            .addDisposableTo(rx_disposeBag)
-        
-        _ = variable.asObservable()
-//        chapter.asDriver()
-            .filter({ chapter -> Bool in
-                chapter.id > 0
-            })
-            .subscribe(onNext: { chapter in
-                
-                print(chapter)
-                
-                mangaManager.generateItems(chapter)
-                
-                self.mangaBrowser = MangaBrowser(chapter: chapter)
-                self.view.addSubview(self.mangaBrowser!.collectionView)
-                self.mangaBrowser!.collectionView.snp_makeConstraints(closure: { (make) in
-                    make.edges.equalTo(self.view)
-                })
-                
-            }, onCompleted: {
-                
-                print("onCompleted:\(variable)")
-                    
-            })
-//            .subscribeNext({ chapter in
-//                
-//                
-//                
-//            })
-//            .drive(onNext: { chapter in
-//                
-//                
-//                
-//                }, onCompleted: nil, onDisposed: {
-//                
-//            })
-//            .addDisposableTo(rx_disposeBag)
+        self.viewModel.loadCurrentChapter()
+        self.viewModel.refreshTrigger.onNext()
     }
     
     override func didReceiveMemoryWarning() {
