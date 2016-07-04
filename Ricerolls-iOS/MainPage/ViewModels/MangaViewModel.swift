@@ -14,14 +14,17 @@ import Kingfisher
 
 class MangaViewModel: BaseViewModel<ComicAPI> {
     
-    let secions = Variable<[ChapterSection]>([])
+    var secions: Variable<[ChapterSection]>?
     
-    var comic: Comic!
+    var comic: Comic?
     
-    var currentChapter: Chapter!
+    var currentChapter: Chapter?
     
     lazy var imageCache: ImageCache = {
-        let name = "\(self.currentChapter.id)"
+        guard let currentChapter = self.currentChapter else {
+            return KingfisherManager.sharedManager.cache
+        }
+        let name = "\(currentChapter.id)"
         let cache: ImageCache = ImageCache(name: name, path: (CACHE_FOLDER as NSString).stringByAppendingPathComponent("chapters"))
         cache.maxMemoryCost = 30
         return cache
@@ -30,15 +33,28 @@ class MangaViewModel: BaseViewModel<ComicAPI> {
     convenience init(comic: Comic) {
         self.init()
         self.comic = comic
+        self.secions = Variable<[ChapterSection]>([])
     }
     
     func loadCurrentChapter() {
         
-        self.loadChapter(currentChapter)
+        if let currentChapter = self.currentChapter {
+            
+            self.loadChapter(currentChapter)
+            
+        }
         
     }
     
     func loadChapter(chapter: Chapter) {
+        
+        guard let comic = self.comic else {
+            return
+        }
+        
+        guard let secions = self.secions else {
+            return
+        }
         
         let resposne = requestTarget(.Chapter(comicId: comic.id, id: chapter.id))
         

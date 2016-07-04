@@ -139,6 +139,7 @@ class BookDetailViewController: BaseViewController {
     deinit {
         
         print("deinit: \(self)")
+        self.viewModel?.rx_disposeBag = DisposeBag()
         
     }
 

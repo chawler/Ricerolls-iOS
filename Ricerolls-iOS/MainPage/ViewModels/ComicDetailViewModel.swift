@@ -36,4 +36,10 @@ class ComicDetailViewModel: BaseViewModel<ComicAPI> {
         
     }
     
+    deinit {
+        
+        print("deinit \(self)")
+        
+    }
+    
 }

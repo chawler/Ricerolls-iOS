@@ -30,10 +30,9 @@ extension ChapterSection: AnimatableSectionModelType {
     }
 }
 
-class MangaViewController: BaseViewController, UIScrollViewDelegate {
+class MangaViewController: BaseViewController, UICollectionViewDelegateFlowLayout {
     
-    var mangaBrowser: MangaBrowser?
-    var viewModel: MangaViewModel!
+    var viewModel: MangaViewModel?
     
     lazy var flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -41,6 +40,7 @@ class MangaViewController: BaseViewController, UIScrollViewDelegate {
         layout.minimumLineSpacing = 0
         layout.sectionInset = UIEdgeInsetsZero
         layout.scrollDirection = .Horizontal
+        layout.itemSize = CGSizeMake(kDeviceWidth, kDeviceHeight)
         return layout
     }()
     
@@ -53,19 +53,23 @@ class MangaViewController: BaseViewController, UIScrollViewDelegate {
     override func config() {
         super.config()
         
+        automaticallyAdjustsScrollViewInsets = false
         collectionView.registerClass(MangaCollectionViewCell.self, forCellWithReuseIdentifier: kMangaCollectionViewCell)
         
-        let dataSource = RxCollectionViewSectionedAnimatedDataSource<ChapterSection>()
-        dataSource.cellFactory = { (ds, cv, ip, item: MangaItem) in
-            let cell = cv.dequeueReusableCellWithReuseIdentifier(kMangaCollectionViewCell, forIndexPath: ip) as! MangaCollectionViewCell
-            cell.imageView.setImageWith(item.url, cacheTarget: self.viewModel.imageCache)
-            return cell
+        if let viewModel = self.viewModel {
+            let dataSource = RxCollectionViewSectionedAnimatedDataSource<ChapterSection>()
+            dataSource.cellFactory = { (ds, cv, ip, item: MangaItem) in
+                let cell = cv.dequeueReusableCellWithReuseIdentifier(kMangaCollectionViewCell, forIndexPath: ip) as! MangaCollectionViewCell
+                cell.imageView.setImageWith(item.url, cacheTarget: viewModel.imageCache)
+                cell.reset()
+                return cell
+            }
+            
+            viewModel.secions!
+                .asDriver()
+                .drive(collectionView.rx_itemsWithDataSource(dataSource))
+                .addDisposableTo(rx_disposeBag)
         }
-        
-        viewModel.secions
-            .asDriver()
-            .drive(collectionView.rx_itemsWithDataSource(dataSource))
-            .addDisposableTo(rx_disposeBag)
     }
     
     override func setupViews() {
@@ -82,8 +86,20 @@ class MangaViewController: BaseViewController, UIScrollViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel.loadCurrentChapter()
-        self.viewModel.refreshTrigger.onNext()
+        if let viewModel = self.viewModel {
+            viewModel.loadCurrentChapter()
+            viewModel.refreshTrigger.onNext()
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.enabled = false
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.enabled = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -93,7 +109,8 @@ class MangaViewController: BaseViewController, UIScrollViewDelegate {
     
     deinit {
 
-        print("deinit")
+        print("deinit \(self)")
+        self.viewModel?.rx_disposeBag = DisposeBag()
         
     }
 
