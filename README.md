@@ -6,4 +6,6 @@
 
 ## 预览
 
-![](http://ww1.sinaimg.cn/large/73f7922fgw1f7k0k6miacg20af0j5npj.gif)
+<p align="center">
+  <img src="http://ww1.sinaimg.cn/large/73f7922fgw1f7k0k6miacg20af0j5npj.gif" />
+</p>
