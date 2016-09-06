@@ -17,7 +17,7 @@ enum ComicAPI {
 
 extension ComicAPI: TargetType {
     
-    var baseURL: NSURL { return NSURL(string: "http://evertrip.me:3000/api/v1")! }
+    var baseURL: NSURL { return NSURL(string: "http://mhku.co:5000/api/v1")! }
     
     var path: String {
         switch self {
