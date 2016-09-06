@@ -6,6 +6,4 @@
 
 ## 预览
 
-<p align="center">
-  <img src="screenhots/01.gif" />
-</p>
+![](screenhots/01.gif)
