@@ -42,6 +42,10 @@ class MangaViewModel: BaseViewModel<ComicAPI> {
             
             self.loadChapter(currentChapter)
             
+            AppContext.downloader.requestModifier = { request in
+                request.addValue(currentChapter.origin_url, forHTTPHeaderField: "Referer")
+            }
+            
         }
         
     }

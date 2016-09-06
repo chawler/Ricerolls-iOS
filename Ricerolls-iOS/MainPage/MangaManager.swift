@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let kChinaNet = "http://idx1.hamreus.com:8080"
+private let kChinaNet = "http://idx2.hamreus.com:8080"
 private let kChinaUnicom = ""
 
 typealias MangaObject = [Chapter: Array<MangaItem>]
